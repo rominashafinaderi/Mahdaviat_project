@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mahdaviat_project/FirstMainScreem.dart';
 import 'package:mahdaviat_project/color.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class welcomeScreen extends StatefulWidget {
   const welcomeScreen({super.key});
 
@@ -15,13 +17,13 @@ class _welcomeScreenState extends State<welcomeScreen> {
       body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(right:0),
+                    padding: const EdgeInsets.only(left: 50 ),
                     child: Text('اپلیکیشن جامع مهدویت\n مهدیاران',textDirection: TextDirection.rtl,style: TextStyle(fontFamily:'bold' ,fontSize:25,fontWeight: FontWeight.bold),),
                   ),
                   SizedBox(
@@ -54,7 +56,12 @@ class _welcomeScreenState extends State<welcomeScreen> {
                   Padding(
                     padding: EdgeInsets.only(bottom:22,top:22,left: 6,right: 6),
                     child: Wrap(
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: <Widget>[
+                        Text('عضویت در برنامه', style:TextStyle(fontSize:20,color: Colors.white)),
+                        SizedBox(
+                          width:100,
+                        ),
                     Container(
                           margin: EdgeInsets.all(1),
                           padding: EdgeInsets.all(1),
@@ -62,12 +69,10 @@ class _welcomeScreenState extends State<welcomeScreen> {
                               shape: BoxShape.circle,
                               border: Border.all(color: Colors.white)
                           ),
-                          child: Icon(Icons.arrow_back, color: Colors.white,),
+                          child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white,),
                         ),
-                        SizedBox(
-                          width:100,
-                        ),
-                        Text('عضویت در برنامه', style:TextStyle(fontSize:20,color: Colors.white)),
+
+
                       ],
                     ),
                   ),
@@ -75,9 +80,12 @@ class _welcomeScreenState extends State<welcomeScreen> {
               SizedBox(
                 height:20,
               ),
-              TextButton(
-                  onPressed: (){},
-                  child: Text('ورود به عنوان مهمان',style: TextStyle(fontSize:15,color: Colors.black),)
+              Padding(
+                padding: const EdgeInsets.only(right:95 ),
+                child: TextButton(
+                    onPressed: (){},
+                    child: Text('ورود به عنوان مهمان',style: TextStyle(fontSize:15,color: Colors.black),)
+                ),
               ),
               SizedBox(
                 height:70,
