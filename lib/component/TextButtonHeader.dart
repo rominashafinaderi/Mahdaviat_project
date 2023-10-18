@@ -1,32 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-class HeaderButton extends StatefulWidget {
-  const HeaderButton({super.key,});
+class TextButtonHeader extends StatefulWidget {
   @override
-  State<HeaderButton> createState() => _HeaderButtonState();
+  State<StatefulWidget> createState() => _TextButtonHeader();
 
+  final double iconSize;
+  final Color iconColor;
+  IconData iconData;
+  String? text;
+  Color? color ;
+  TextDirection? textDirection;
+  void Function()? onPressed;
 
+  TextButtonHeader({
+    this.iconSize = 17,
+    this.iconColor = Colors.black54,
+    required this.iconData,
+    this.text,
+    this.color,
+    this.onPressed,
+  });
 }
 
-class _HeaderButtonState extends State<HeaderButton> {
+class _TextButtonHeader extends State<TextButtonHeader> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed:(){},
+      style:ButtonStyle(
+        overlayColor: MaterialStateColor.resolveWith((states) => Colors.white),
+
+      ),
+      onPressed: widget.onPressed,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Icon(
-              FontAwesomeIcons.folderMinus,
-              size: 17,
-              color: Colors.black.withOpacity(0.7)),
-          SizedBox(width:4,),
-          Text("برگزیده",
-            style: TextStyle(color: Colors.black.withOpacity(0.7)
-            ),)
-          , // tex
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+            Icon(
+              widget.iconData,
+              size: widget.iconSize,
+              color: widget.iconColor,
+            ),
+          SizedBox(width:6),
+              Text(
+                widget.text!,
+                style: TextStyle(
+                  color: Colors.black.withOpacity(0.7),
+                ),
+              ),
         ],
       ),
     );
   }
 }
+
