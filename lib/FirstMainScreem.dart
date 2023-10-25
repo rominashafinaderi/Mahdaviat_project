@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mahdaviat_project/component/customTabBar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mahdaviat_project/component/TextButtonHeader.dart';
-import 'package:mahdaviat_project/component/customeAppBar.dart';
 import 'package:mahdaviat_project/component/customButtonTabBar.dart';
+import 'package:mahdaviat_project/component/customTabBar.dart';
+import 'package:mahdaviat_project/component/customeAppBar.dart';
 
 class FirstMainScreen extends StatefulWidget {
   const FirstMainScreen({super.key});
@@ -13,25 +13,45 @@ class FirstMainScreen extends StatefulWidget {
 }
 
 List<String> imageAddress = [
-  'assets/images3.jpg',
-  'assets/images4.jpg',
-  'assets/images5.jpg',
-  'assets/images6.jpg',
-  'assets/images7.jpg',
-  'assets/images8.jpg',
-  'assets/download.jpg',
-  'assets/images9.jpg',
+  'assets/pic1.png',
+  'assets/pic2.jpg',
+  'assets/pic3.jpg',
+  'assets/pic4.jpg',
+  'assets/pic1.png',
+  'assets/pic2.jpg',
+  'assets/pic3.jpg',
+  'assets/pic4.jpg',
 ];
 List<String> title = [
-  'کلیپ/',
-  'عکس/',
-  'صوت/',
-  'متن/',
-  'کلیپ/',
-  'عکس/',
-  'صوت/',
-  'متن/',
-  'کلیپ/'
+  'کلیپ/استاد رائفی پور-عبرت\nهای بنی اسرائیل',
+  'عکس/آبیاری کوزه ای یا آبیاری\nتراوا روش های نوین',
+  'صوت/شهید تهرانی مقدم,مغز\nمتفکر ایران در ساخت موشک...',
+  ' متن/آیا رفتن ترامپ به معنای \nشکست فشار حداکثری',
+  'کلیپ/استاد رائفی پور-عبرت\nهای بنی اسرائیل',
+  'عکس/آبیاری کوزه ای یا آبیاری\nتراوا روش های نوین',
+  'صوت/شهید تهرانی مقدم,مغز\nمتفکر ایران در ساخت موشک...',
+  ' متن/آیا رفتن ترامپ به معنای \nشکست فشار حداکثری',
+];
+List<IconData> icons = [
+FontAwesomeIcons.youtube,
+FontAwesomeIcons.image,
+ FontAwesomeIcons.volumeLow,
+FontAwesomeIcons.fileLines,
+  FontAwesomeIcons.youtube,
+  FontAwesomeIcons.image,
+  FontAwesomeIcons.volumeLow,
+  FontAwesomeIcons.fileLines
+];
+
+List<Color> colors = [
+  Colors.blueAccent,
+  Colors.greenAccent,
+  Colors.orange,
+  Colors.purple,
+  Colors.blueAccent,
+  Colors.greenAccent,
+  Colors.orange,
+  Colors.purple,
 ];
 
 class _FirstMainScreenState extends State<FirstMainScreen> {
@@ -45,11 +65,12 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: 20,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(right: 15),
+                  padding: const EdgeInsets.only(right: 5),
                   child: TextButtonHeader(
                     iconData: FontAwesomeIcons.folderMinus,
                     text: "برگزیده",
@@ -78,72 +99,78 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                 ),
               ],
             ),
+            SizedBox(height: 10),
             CustomTabBar(),
+            // CustomButtonTabBar(),
+            SizedBox(height: 15),
             Expanded(
-                flex:6,
+                flex: 7,
                 child: TabBarView(
                   children: [
-                    Padding(
-                        padding: EdgeInsets.only(bottom:60),
-                        child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                         GridView.builder(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                           ),
+
                           itemCount: imageAddress.length,
                           itemBuilder: (context, index) {
                             String imageAddress2 = imageAddress[index];
-                            // String title2 = title[index];
+                            String title2 = title[index];
+                            IconData icon = icons[index];
+                            Color color = colors[index % colors.length];
 
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Stack(children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(26),
-                                    child: Image.asset(
-                                      imageAddress2,
-                                      width: 160,
-                                      height: 170,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  Container(
-                                      child: Positioned(
-                                          left: 18,
-                                          bottom: 18,
-                                          child: Container(
-                                            width: 40,
-                                            height: 40,
-                                            decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              border: Border.all(
-                                                color: Colors.black.withOpacity(0.5),
+                            return Container(
+                              padding: EdgeInsets.only(right: index%2==0 ? 15 : 7.5, left: index%2 !=0 ? 15 : 7.5,bottom: 40),
+                              color: Colors.red,
+                           width: MediaQuery.sizeOf(context).width/2,
+                              height:(  MediaQuery.sizeOf(context).width/2) +60,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Stack(children: [
+
+                                    ClipRRect(
+                                        borderRadius: BorderRadius.circular(26),
+                                        child: AspectRatio(
+                                          aspectRatio: 1,
+                                          child: Image.asset(
+                                            imageAddress2,
+                                            // width: 160,
+                                            // height: 160,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    Container(
+                                        child: Positioned(
+                                            left: 18,
+                                            bottom: 18,
+                                            child: Container(
+                                              width: 40,
+                                              height: 40,
+                                              decoration: BoxDecoration(
+                                                color:color ,
+                                                borderRadius: BorderRadius.circular(8),
 
                                               ),
-                                            ),
-                                            child: Icon(
-                                              FontAwesomeIcons.youtube,
-                                              color: Colors.white,
-                                              size: 24,
-                                            ),
-                                          )))
-                                ]),
-                                SizedBox(height:8),
-                                Text(
-                                  'title2',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+                                              child: Icon(
+                                                icon,
+                                                color: Colors.white.withOpacity(0.5),
+                                                size: 24,
+                                              ),
+                                            )))
+                                  ]),
+                                  Text(
+                                      title2,
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                ],
+                              ),
                             );
                           },
-                        )
-                    ),
+                        ),
                     Placeholder(),
                   ],
                 ))

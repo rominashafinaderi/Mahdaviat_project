@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'mahdaviat ',
       theme: ThemeData(
-        fontFamily: 'fonts',
+        fontFamily: 'normal',
         useMaterial3: true,
       ),
       home: const welcomeScreen(),

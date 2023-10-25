@@ -101,7 +101,7 @@ class _DotPainter extends BoxPainter {
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     assert(configuration.size != null);
     var paint1 = Paint()
-      ..color = Color(0xFFEFF1FE)
+      ..color = Colors.white
       ..style = PaintingStyle.fill;
     canvas.drawRRect(
         RRect.fromRectAndRadius(
@@ -114,17 +114,7 @@ class _DotPainter extends BoxPainter {
             Radius.circular(12.0)),
         paint1);
 
-    final Rect rect = offset & configuration.size!;
-    canvas.drawRRect(
-        RRect.fromRectAndRadius(
-            Rect.fromLTWH(
-              rect.bottomCenter.dx - 6,
-              rect.bottomCenter.dy - 5,
-              19,
-              2,
-            ),
-            Radius.circular(12.0)),
-        _paint);
+
   }
 }
 
