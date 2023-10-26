@@ -1,53 +1,135 @@
 import 'package:flutter/material.dart';
 class TextButtonHeader extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => _TextButtonHeader();
-
+  final IconData iconData;
   final double iconSize;
-  final Color iconColor;
-  IconData iconData;
-  String? text;
-  Color? color ;
-  TextDirection? textDirection;
-  void Function()? onPressed;
+   final Color iconColor;
+  final String text;
+  final  Color? color ;
+  final VoidCallback onPressed;
+  final bool isSelected;
 
-  TextButtonHeader({
-    this.iconSize = 17,
-    this.iconColor = Colors.black54,
+
+  const TextButtonHeader({
+    Key? key,
     required this.iconData,
-    this.text,
+    required this.text,
+    required this.onPressed,
+    required this.isSelected,
+    this.iconSize=17,
+     this.iconColor= Colors.black54,
     this.color,
-    this.onPressed,
-  });
+  }) : super(key: key);
+
+  @override
+  _TextButtonHeaderState createState() => _TextButtonHeaderState();
 }
 
-class _TextButtonHeader extends State<TextButtonHeader> {
+class _TextButtonHeaderState extends State<TextButtonHeader> {
+  bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style:ButtonStyle(
-        overlayColor: MaterialStateColor.resolveWith((states) => Colors.white),
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          isSelected = !isSelected;
+        });
+        widget.onPressed();
+      },
+      child: ClipRRect(
+         borderRadius : BorderRadius.circular(20),
 
-      ),
-      onPressed: widget.onPressed,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-            Icon(
-              widget.iconData,
-              size: widget.iconSize,
-              color: widget.iconColor,
-            ),
-          SizedBox(width:6),
+      child: Container(
+          padding: EdgeInsets.all(12),
+          color: isSelected ? Colors.white : null,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment:CrossAxisAlignment.center,
+            children: [
+              Icon(
+                widget.iconData,
+                size: widget.iconSize,
+                color: isSelected ? Colors.greenAccent : Colors.grey[600]!,
+              ),
+              SizedBox(width:6),
               Text(
-                widget.text!,
+                widget.text,
                 style: TextStyle(
-                  color: Colors.black.withOpacity(0.7),
+                  color: isSelected ? Colors.grey[800]!:Colors.grey[600]!,
                 ),
               ),
-        ],
+            ],
+          ),
+        ),
       ),
     );
   }
 }
+// class TextButtonHeader extends StatefulWidget {
+//   @override
+//   State<TextButtonHeader> createState() => _TextButtonHeaderState();
+//
+//   final double iconSize;
+//   final Color iconColor;
+//   final bool isSelected;
+//   final VoidCallback press;
+//   IconData iconData;
+//   String? text;
+//   Color? color ;
+//   void Function()? onPressed2;
+//
+//     TextButtonHeader({
+//     this.iconSize = 17,
+//     this.iconColor = Colors.black54,
+//     required this.iconData,
+//     this.text,
+//     this.color,
+//     this.onPressed2,
+//       required this.isSelected,
+//       required this.press,
+//   });
+// }
+//
+// class _TextButtonHeaderState extends State<TextButtonHeader> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       onTap: (){
+//         setState(() {
+//           isSelected = !widget.isSelected;
+//         });
+//         widget.press();
+//       },
+//       child: Container(
+//         color: widget.isSelected ? Colors.white : null,
+//         child: TextButton(
+//           style:ButtonStyle(
+//             overlayColor: MaterialStateColor.resolveWith((states) => Colors.white),
+//
+//           ),
+//           onPressed: widget.onPressed2,
+//           child: Row(
+//             crossAxisAlignment: CrossAxisAlignment.center,
+//             children: [
+//                 Icon(
+//                   widget.iconData,
+//                   size: widget.iconSize,
+//                   color: widget.iconColor,
+//                 ),
+//               SizedBox(width:6),
+//                   Text(
+//                     widget.text!,
+//                     style: TextStyle(
+//                       color: widget.isSelected ? Colors.black : Colors.blueAccent,
+//                     ),
+//                   ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+//
+//   TextDirection? textDirection;
+// }
 

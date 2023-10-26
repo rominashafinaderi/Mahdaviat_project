@@ -3,6 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+ final void Function()? onPressed;
+
+   CustomAppBar({
+    Key? key,
+    required this.onPressed,
+  }) : super(key: key);
+
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
@@ -28,34 +35,35 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
       title: Padding(
-        padding: const EdgeInsets.only(top: 10, right: 5),
-        child: SizedBox(
-          height: 45,
-          width: 35,
-          child: Container(
-            margin: const EdgeInsets.all(2),
-            padding: EdgeInsets.zero,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                width: 2.0,
-                color: Colors.grey[400]!,
-              ),
-            ),
-            child:
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.arrow_back_ios_rounded,
-                color: Colors.grey,
-                size: 20,
-              ),
+          padding: const EdgeInsets.only(top: 10, right: 5),
+          child: SizedBox(
+            height: 45,
+            width: 35,
+            child: Container(
+              margin: const EdgeInsets.all(2),
               padding: EdgeInsets.zero,
-              constraints: BoxConstraints(),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  width: 2.0,
+                  color: Colors.grey[400]!,
+                ),
+              ),
+              child:
+              IconButton(
+                onPressed:onPressed,
+                icon: const Icon(
+                  Icons.arrow_back_ios_rounded,
+                  color: Colors.grey,
+                  size: 20,
+                ),
+                padding: EdgeInsets.zero,
+                constraints: BoxConstraints(),
+              ),
             ),
           ),
         ),
-      ),
+
       flexibleSpace: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
@@ -65,4 +73,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
     );
   }
+
 }
