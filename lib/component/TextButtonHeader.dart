@@ -25,23 +25,17 @@ class TextButtonHeader extends StatefulWidget {
 }
 
 class _TextButtonHeaderState extends State<TextButtonHeader> {
-  bool isSelected = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          isSelected = !isSelected;
-        });
-        widget.onPressed();
-      },
+      onTap: widget.onPressed,
       child: ClipRRect(
          borderRadius : BorderRadius.circular(20),
 
       child: Container(
           padding: EdgeInsets.all(12),
-          color: isSelected ? Colors.white : null,
+          color: widget.isSelected ? Colors.white : null,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment:CrossAxisAlignment.center,
@@ -49,13 +43,13 @@ class _TextButtonHeaderState extends State<TextButtonHeader> {
               Icon(
                 widget.iconData,
                 size: widget.iconSize,
-                color: isSelected ? Colors.greenAccent : Colors.grey[600]!,
+                color: widget.isSelected ? Color(0xFF0ad9b8) : Colors.grey[600]!,
               ),
               SizedBox(width:6),
               Text(
                 widget.text,
                 style: TextStyle(
-                  color: isSelected ? Colors.grey[800]!:Colors.grey[600]!,
+                  color: widget.isSelected ? Colors.grey[800]!:Colors.grey[600]!,
                 ),
               ),
             ],

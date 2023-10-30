@@ -4,6 +4,7 @@ import 'package:mahdaviat_project/component/TextButtonHeader.dart';
 import 'package:mahdaviat_project/component/customTabBar.dart';
 import 'package:mahdaviat_project/component/customeAppBar.dart';
 import 'package:mahdaviat_project/filterScreen.dart';
+import 'package:mahdaviat_project/searchScreen.dart';
 
 class FirstMainScreen extends StatefulWidget {
   const FirstMainScreen({super.key});
@@ -46,15 +47,18 @@ List<Color> colors = [
 ];
 
 class _FirstMainScreenState extends State<FirstMainScreen> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = -1;
-
     return DefaultTabController(
       length: 2,
       child: Scaffold(
         backgroundColor: Color(0xFFF5F8FF),
         appBar: CustomAppBar(
+          onPressed0:  () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));
+          },
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> FilterScreen()));
           },
@@ -88,7 +92,7 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                   isSelected: selectedIndex == 1,
                   onPressed: () {
                     setState(() {
-                      selectedIndex =-1;
+                      selectedIndex =1;
                     });
                     },
                 ),
@@ -98,7 +102,7 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                   isSelected: selectedIndex == 2,
                   onPressed: () {
                     setState(() {
-                      selectedIndex = -1;
+                      selectedIndex = 2;
                     });
                     },
                 ),
@@ -108,7 +112,7 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                   isSelected: selectedIndex == 3,
                   onPressed: () {
                     setState(() {
-                      selectedIndex = -1;
+                      selectedIndex = 3;
                     });
                     },
                 ),
@@ -118,65 +122,12 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                   isSelected: selectedIndex == 4,
                   onPressed: () {
                     setState(() {
-                      selectedIndex = -1;
+                      selectedIndex = 4;
                     });
                     },
                 ),
               ],
             ),
-            // Row(
-            //   crossAxisAlignment: CrossAxisAlignment.center,
-            //   children: <Widget>[
-            //     Padding(
-            //       padding: const EdgeInsets.only(right:10),
-            //       child: TextButtonHeader(
-            //         iconData: FontAwesomeIcons.folderMinus,
-            //         text: "برگزیده",
-            //         onPressed2: () {},
-            //         isSelected: selectedIndex == 0,
-            //         press: () {
-            //           selectedIndex = 0;
-            //         },
-            //       ),
-            //     ),
-            //     TextButtonHeader(
-            //       iconData: FontAwesomeIcons.youtube,
-            //       text: "ویدیو",
-            //       onPressed2: () {},
-            //       isSelected: selectedIndex == 1,
-            //       press: () {
-            //         selectedIndex = 1;
-            //       },
-            //     ),
-            //     TextButtonHeader(
-            //       iconData: FontAwesomeIcons.volumeLow,
-            //       text: "صوت",
-            //       onPressed2: () {},
-            //       isSelected: selectedIndex == 2,
-            //       press: () {
-            //         selectedIndex = 2;
-            //       },
-            //     ),
-            //     TextButtonHeader(
-            //       iconData: FontAwesomeIcons.image,
-            //       text: "عکس",
-            //       onPressed2: () {},
-            //       isSelected: selectedIndex == 3,
-            //       press: () {
-            //         selectedIndex = 3;
-            //       },
-            //     ),
-            //     TextButtonHeader(
-            //       iconData: FontAwesomeIcons.fileLines,
-            //       text: "متن",
-            //       onPressed2: () {},
-            //       isSelected: selectedIndex == 4,
-            //       press: () {
-            //         selectedIndex = 4;
-            //       },
-            //     ),
-            //   ],
-            // ),
             SizedBox(height: 10),
             CustomTabBar(),
             // CustomButtonTabBar(),
