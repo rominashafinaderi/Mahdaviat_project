@@ -7,7 +7,7 @@ class CustomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Expanded(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 35,vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal:20,vertical: 8),
         child: Column(
           children: <Widget>[
             Container(
@@ -22,7 +22,7 @@ class CustomTabBar extends StatelessWidget {
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicatorWeight: 2,
                 indicator: DotIndicator(
-                  tabbarWidth: MediaQuery.of(context).size.width - 2 * 35,
+                  tabbarWidth: MediaQuery.of(context).size.width - 2 *20,
                 ),
                 labelColor: Colors.black,
                 unselectedLabelColor: Colors.black,

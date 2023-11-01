@@ -34,7 +34,7 @@ class _TextButtonHeaderState extends State<TextButtonHeader> {
          borderRadius : BorderRadius.circular(20),
 
       child: Container(
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.all(10),
           color: widget.isSelected ? Colors.white : null,
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -45,7 +45,7 @@ class _TextButtonHeaderState extends State<TextButtonHeader> {
                 size: widget.iconSize,
                 color: widget.isSelected ? Color(0xFF0ad9b8) : Colors.grey[600]!,
               ),
-              SizedBox(width:6),
+              SizedBox(width:5),
               Text(
                 widget.text,
                 style: TextStyle(

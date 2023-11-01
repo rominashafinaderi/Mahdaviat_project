@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mahdaviat_project/FirstMainScreen.dart';
+import 'package:mahdaviat_project/component/FolderShape.dart';
 import 'package:mahdaviat_project/component/TextButtonHeader.dart';
 import 'package:mahdaviat_project/component/customTabBar.dart';
 import 'package:mahdaviat_project/component/customeAppBar.dart';
@@ -45,7 +47,15 @@ List<Color> colors = [
   Colors.orange,
   Colors.purple,
 ];
+List<String> albumTitle = [
+  'ارکان ظهور منجی',
+  'رساله مهدویت',
+  'توصیه های ظهور',
+  'ارکان ظهور منجی',
+  'رساله مهدویت',
+  'توصیه های ظهور',
 
+];
 class _FirstMainScreenState extends State<FirstMainScreen> {
   int selectedIndex = 0;
 
@@ -74,7 +84,7 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right:18),
                   child: TextButtonHeader(
                     iconData: FontAwesomeIcons.folderMinus,
                     text: "برگزیده",
@@ -198,9 +208,136 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                         );
                       },
                     ),
-                    Placeholder(),
+                    Expanded(
+                      flex: 8,
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 22,left: 22),
+                        child: GridView.builder(
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisExtent: 160 // <-- *****
+                          ),
+                          itemCount:6,
+                          itemBuilder: (context, index) {
+                            if (index == 1 ) {
+                              return Container(
+                                width:100,
+                                height:100,
+                                child: Column(
+                                  children: [
+                                    Stack(
+                                      children:[
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(20)
+                                          ),
+                                          height: 100,
+                                          width: 100,
+                                          margin: EdgeInsets.all(10),
+                                          padding: EdgeInsets.all(10),
+                                          child:
+                                          CustomPaint(
+                                            painter: FolderShapePainter(color: Color(0xFFe9ebfa)),
+                                          ),
+                                        ),
+                                        Container(
+                                            child: Positioned(
+                                                left: 28,
+                                                bottom: 28,
+                                                child: Container(
+                                                  width:22,
+                                                  height:22,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xFF00e0be),
+                                                    borderRadius: BorderRadius.circular(8),
+                                                  ),
+                                                  child: Icon(
+                                                    FontAwesomeIcons.solidStar,
+                                                    color: Colors.white,
+                                                    size:11,
+                                                  ),
+                                                )))
+
+                                      ]
+                                    ),
+                                    SizedBox(height:5),
+                                    Text(
+                                      albumTitle[index],
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }else if( index == 2){
+                              return Container(
+                                width:100,
+                                height:100,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(20)
+                                      ),
+                                      height: 100,
+                                      width: 100,
+                                      margin: EdgeInsets.all(10),
+                                      padding: EdgeInsets.all(10),
+                                      child: CustomPaint(
+                                        painter: FolderShapePainter(color: Color(0xFF82ebe4)),
+                                      ),
+                                    ),
+                                    SizedBox(height:5),
+                                    Text(
+                                      albumTitle[index],
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }else{
+                              return Container(
+                                width:100,
+                                height:100,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.circular(20)
+                                      ),
+                                      height: 100,
+                                      width: 100,
+                                      margin: EdgeInsets.all(10),
+                                      padding: EdgeInsets.all(10),
+                                      child: CustomPaint(
+                                        painter: FolderShapePainter(color: Color(0xFFe9ebfa)),
+                                      ),
+                                    ),
+                                    SizedBox(height:5),
+                                    Text(
+                                      albumTitle[index],
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.bold
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ),
                   ],
-                ))
+                )
+            )
           ],
         ),
       ),

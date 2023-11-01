@@ -33,9 +33,9 @@ class _FilterScreenState extends State<FilterScreen> {
         children: [
           SizedBox(height:35),
           Expanded(
-            flex: 1,
+            flex:3,
             child: Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20),
+              padding: const EdgeInsets.only(left: 25,right: 25),
               child: ListView.builder(
 
                 itemCount: 3,
@@ -96,11 +96,10 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
             ),
           ),
-          SizedBox(height:55),
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20),
+              padding: const EdgeInsets.only(left:25,right: 25),
               child: ListView.builder(
                 itemCount:2,
                 itemBuilder: (context, index) => Card(
@@ -140,7 +139,6 @@ class _FilterScreenState extends State<FilterScreen> {
                               CheckboxExample(),
                             ],
                           ),
-
                         ],
                       ),
                     ),
@@ -149,6 +147,46 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
             ),
           ),
+          SizedBox(height:55),
+          Expanded(
+             flex: 1,
+          child: Stack(
+            children:[
+              Positioned(
+                bottom: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(23)
+                    ),
+                    width: 410,
+                    height:80,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(width:35),
+                        Text('563 نتیجه',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            color:Color(0xFF0ad9b8)
+                          ),),
+                        Spacer(),
+                        Icon(FontAwesomeIcons.fileLines,size:19, color:Color(0xFF0ad9b8)),
+                        Text('اعمال فیلتر ها',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 13
+                          ),),
+                        SizedBox(width:35),
+
+                      ],
+                    ),
+                  )
+              ),
+            ]
+          ),
+          )
         ],
       ),
     );

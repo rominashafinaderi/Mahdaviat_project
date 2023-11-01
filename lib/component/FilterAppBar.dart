@@ -17,28 +17,44 @@ class filterAppBar extends StatelessWidget implements PreferredSizeWidget{
         statusBarIconBrightness: Brightness.dark,
       ),
       actions: [
-        Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Text('پاک کردن همه',
-              style: TextStyle(
-                color:  Colors.grey[400]!,
-                fontWeight: FontWeight.bold
-              ),),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: InkWell(
+            customBorder: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10, left:3),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  FontAwesomeIcons.trash,
-                  color: Colors.grey[400]!,
-                  size:20,
+            highlightColor:Color(0xFFeef0fc),
+            splashColor:Color(0xFFeef0fc),
+            onTap: (){},
+            child: GestureDetector(
+              child: Container(
+
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: Text('پاک کردن همه',
+                      style: TextStyle(
+                        color:  Colors.grey[400]!,
+                        fontWeight: FontWeight.bold
+                      ),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10, left:3),
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(
+                          FontAwesomeIcons.trash,
+                          color: Colors.grey[400]!,
+                          size:20,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
+          ),
         ),
       ],
       title: Row(
