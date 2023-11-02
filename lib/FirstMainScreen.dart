@@ -78,68 +78,128 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 20,
+              height: 25,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(right:18),
-                  child: TextButtonHeader(
-                    iconData: FontAwesomeIcons.folderMinus,
-                    text: "برگزیده",
-                    isSelected: selectedIndex == 0,
-                    onPressed: () {
-                      setState(() {
-                        selectedIndex = 0;
-                      });
-                    },
+                  padding: const EdgeInsets.only(right:15),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: selectedIndex == 0
+                          ? [
+                        BoxShadow(
+                          color: Colors.grey[400]!.withOpacity(0.5),
+                          blurRadius: 25,
+                        ),
+                      ]
+                          : [],
+                    ),
+                    child: TextButtonHeader(
+                      iconData: FontAwesomeIcons.folderMinus,
+                      text: "برگزیده",
+                      isSelected: selectedIndex == 0,
+                      onPressed: () {
+                        setState(() {
+                          selectedIndex = 0;
+                        });
+                      },
+                    ),
                   ),
                 ),
-                TextButtonHeader(
-                  iconData: FontAwesomeIcons.youtube,
-                  text: "ویدیو",
-                  isSelected: selectedIndex == 1,
-                  onPressed: () {
-                    setState(() {
-                      selectedIndex =1;
-                    });
-                    },
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: selectedIndex == 1
+                        ? [
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
+                        : [],
+                  ),
+                  child: TextButtonHeader(
+                    iconData: FontAwesomeIcons.youtube,
+                    text: "ویدیو",
+                    isSelected: selectedIndex == 1,
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex =1;
+                      });
+                      },
+                  ),
                 ),
-                TextButtonHeader(
-                  iconData: FontAwesomeIcons.volumeLow,
-                  text: "صوت",
-                  isSelected: selectedIndex == 2,
-                  onPressed: () {
-                    setState(() {
-                      selectedIndex = 2;
-                    });
-                    },
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: selectedIndex == 2
+                        ? [
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
+                        : [],
+                  ),
+                  child: TextButtonHeader(
+                    iconData: FontAwesomeIcons.volumeLow,
+                    text: "صوت",
+                    isSelected: selectedIndex == 2,
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = 2;
+                      });
+                      },
+                  ),
                 ),
-                TextButtonHeader(
-                  iconData: FontAwesomeIcons.image,
-                  text: "عکس",
-                  isSelected: selectedIndex == 3,
-                  onPressed: () {
-                    setState(() {
-                      selectedIndex = 3;
-                    });
-                    },
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: selectedIndex == 3
+                        ? [
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
+                        : [],
+                  ),
+                  child: TextButtonHeader(
+                    iconData: FontAwesomeIcons.image,
+                    text: "عکس",
+                    isSelected: selectedIndex == 3,
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = 3;
+                      });
+                      },
+                  ),
                 ),
-                TextButtonHeader(
-                  iconData: FontAwesomeIcons.fileLines,
-                  text: "متن",
-                  isSelected: selectedIndex == 4,
-                  onPressed: () {
-                    setState(() {
-                      selectedIndex = 4;
-                    });
-                    },
+                Container(
+                  decoration: BoxDecoration(
+                    boxShadow: selectedIndex == 4
+                        ? [
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
+                        : [],
+                  ),
+                  child: TextButtonHeader(
+                    iconData: FontAwesomeIcons.fileLines,
+                    text: "متن",
+                    isSelected: selectedIndex == 4,
+                    onPressed: () {
+                      setState(() {
+                        selectedIndex = 4;
+                      });
+                      },
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 10),
-            CustomTabBar(),
+            CustomTabBar(firstTitle: 'همه پست ها', secondTitle: 'همه آلبوم ها',),
             // CustomButtonTabBar(),
             SizedBox(height: 5),
             Expanded(
@@ -157,9 +217,9 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                         Color color = colors[index % colors.length];
 
                         return Container(
-                          padding: EdgeInsets.only(right: index % 2 == 0 ? 20 : 10, left: index % 2 != 0 ? 20 : 10),
+                          padding: EdgeInsets.only(right: index % 2 == 0 ? 27 : 12, left: index % 2 != 0 ? 27 : 12),
                           width: MediaQuery.sizeOf(context).width / 2,
-                          height: (MediaQuery.sizeOf(context).width / 2) + 60,
+                          height: (MediaQuery.sizeOf(context).width / 2) ,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -200,6 +260,7 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                     fontSize: 13,
+                                    fontWeight: FontWeight.bold
                                   ),
                                 ),
                               ),
@@ -208,23 +269,76 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                         );
                       },
                     ),
-                    Expanded(
-                      flex: 8,
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 22,left: 22),
-                        child: GridView.builder(
-                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisExtent: 160 // <-- *****
-                          ),
-                          itemCount:6,
-                          itemBuilder: (context, index) {
-                            if (index == 1 ) {
-                              return Container(
-                                width:100,
-                                height:100,
-                                child: Column(
-                                  children: [
-                                    Stack(
-                                      children:[
+                    Column(
+                      children: [
+                        Expanded(
+                          flex: 8,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 22,left: 22),
+                            child: GridView.builder(
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisExtent: 160 // <-- *****
+                              ),
+                              itemCount:6,
+                              itemBuilder: (context, index) {
+                                if (index == 1 ) {
+                                  return Container(
+                                    width:100,
+                                    height:100,
+                                    child: Column(
+                                      children: [
+                                        Stack(
+                                          children:[
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius: BorderRadius.circular(20)
+                                              ),
+                                              height: 100,
+                                              width: 100,
+                                              margin: EdgeInsets.all(10),
+                                              padding: EdgeInsets.all(10),
+                                              child:
+                                              CustomPaint(
+                                                painter: FolderShapePainter(color: Color(0xFFe9ebfa)),
+                                              ),
+                                            ),
+                                            Container(
+                                                child: Positioned(
+                                                    left: 28,
+                                                    bottom: 28,
+                                                    child: Container(
+                                                      width:22,
+                                                      height:22,
+                                                      decoration: BoxDecoration(
+                                                        color: Color(0xFF00e0be),
+                                                        borderRadius: BorderRadius.circular(8),
+                                                      ),
+                                                      child: Icon(
+                                                        FontAwesomeIcons.solidStar,
+                                                        color: Colors.white,
+                                                        size:11,
+                                                      ),
+                                                    )))
+
+                                          ]
+                                        ),
+                                        SizedBox(height:5),
+                                        Text(
+                                          albumTitle[index],
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }else if( index == 2){
+                                  return Container(
+                                    width:100,
+                                    height:100,
+                                    child: Column(
+                                      children: [
                                         Container(
                                           decoration: BoxDecoration(
                                               color: Colors.white,
@@ -234,106 +348,57 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                                           width: 100,
                                           margin: EdgeInsets.all(10),
                                           padding: EdgeInsets.all(10),
-                                          child:
-                                          CustomPaint(
+                                          child: CustomPaint(
+                                            painter: FolderShapePainter(color: Color(0xFF82ebe4)),
+                                          ),
+                                        ),
+                                        SizedBox(height:5),
+                                        Text(
+                                          albumTitle[index],
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }else{
+                                  return Container(
+                                    width:100,
+                                    height:100,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.circular(20)
+                                          ),
+                                          height: 100,
+                                          width: 100,
+                                          margin: EdgeInsets.all(10),
+                                          padding: EdgeInsets.all(10),
+                                          child: CustomPaint(
                                             painter: FolderShapePainter(color: Color(0xFFe9ebfa)),
                                           ),
                                         ),
-                                        Container(
-                                            child: Positioned(
-                                                left: 28,
-                                                bottom: 28,
-                                                child: Container(
-                                                  width:22,
-                                                  height:22,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFF00e0be),
-                                                    borderRadius: BorderRadius.circular(8),
-                                                  ),
-                                                  child: Icon(
-                                                    FontAwesomeIcons.solidStar,
-                                                    color: Colors.white,
-                                                    size:11,
-                                                  ),
-                                                )))
-
-                                      ]
+                                        SizedBox(height:5),
+                                        Text(
+                                          albumTitle[index],
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      albumTitle[index],
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }else if( index == 2){
-                              return Container(
-                                width:100,
-                                height:100,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(20)
-                                      ),
-                                      height: 100,
-                                      width: 100,
-                                      margin: EdgeInsets.all(10),
-                                      padding: EdgeInsets.all(10),
-                                      child: CustomPaint(
-                                        painter: FolderShapePainter(color: Color(0xFF82ebe4)),
-                                      ),
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      albumTitle[index],
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }else{
-                              return Container(
-                                width:100,
-                                height:100,
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.circular(20)
-                                      ),
-                                      height: 100,
-                                      width: 100,
-                                      margin: EdgeInsets.all(10),
-                                      padding: EdgeInsets.all(10),
-                                      child: CustomPaint(
-                                        painter: FolderShapePainter(color: Color(0xFFe9ebfa)),
-                                      ),
-                                    ),
-                                    SizedBox(height:5),
-                                    Text(
-                                      albumTitle[index],
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.bold
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                          },
+                                  );
+                                }
+                              },
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 )

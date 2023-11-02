@@ -64,7 +64,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                 title[index],
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 13
+                                  fontSize: 12
                                 ),
                               ),
                             ],
@@ -129,7 +129,7 @@ class _FilterScreenState extends State<FilterScreen> {
                               Text(title2[index],
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 13
+                                    fontSize: 12
                                 ),),
                             ],
                           ),

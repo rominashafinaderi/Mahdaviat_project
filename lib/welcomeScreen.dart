@@ -39,44 +39,106 @@ class _welcomeScreenState extends State<welcomeScreen> {
                 ],
               ),
 
-              ElevatedButton(
-                style:ElevatedButton.styleFrom(
-                  backgroundColor:ButtonColor,
-                    shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), // <-- Radius
-                ),
-                ),
-                  onPressed: (){
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  FirstMainScreen()),
-                  );
-                  },
+               Padding(
+                 padding: EdgeInsets.only(right: 10),
                   child:
-                  Padding(
-                    padding: EdgeInsets.only(bottom:22,top:22,left: 6,right: 6),
-                    child: Wrap(
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: <Widget>[
-                        Text('عضویت در برنامه', style:TextStyle(fontSize:20,color: Colors.white)),
-                        SizedBox(
-                          width:100,
-                        ),
-                    Container(
-                          margin: EdgeInsets.all(1),
-                          padding: EdgeInsets.all(1),
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white)
-                          ),
-                          child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white,),
-                        ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF2F64DD),
+                          Color(0xFF3665C6),
+                          Color(0xFF3B73C6),
 
-
-                      ],
+                        ],
+                        begin: Alignment.centerLeft, // Gradient start alignment
+                        end: Alignment.centerRight,
+                      ),
                     ),
-                  ),
-              ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) =>  FirstMainScreen()),
+                                );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent, // Set the button color to transparent
+                        onPrimary: Colors.transparent, // Set the button text color to transparent
+                        shadowColor: Colors.transparent, // Set the button shadow color to transparent
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      child:Padding(
+                                padding: EdgeInsets.only(bottom:22,top:22,left: 6,right: 10),
+                                child: Wrap(
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  children: <Widget>[
+                                    Text('عضویت در برنامه', style:TextStyle(fontSize:14,fontWeight: FontWeight.bold,color: Colors.white)),
+                                    SizedBox(
+                                      width:120,
+                                    ),
+                                Container(
+                                      margin: EdgeInsets.all(1),
+                                      padding: EdgeInsets.all(1),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(width: 2.0,
+                                              color: Colors.white),
+                                      ),
+                                      child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white),
+                                    ),
+                        ]
+
+                      )
+                    ),
+                  )
+                  // ElevatedButton(
+                  //   style:ElevatedButton.styleFrom(
+                  //     backgroundColor:ButtonColor,
+                  //       shape: RoundedRectangleBorder(
+                  //   borderRadius: BorderRadius.circular(20), // <-- Radius
+                  //   ),
+                  //   ),
+                  //     onPressed: (){
+                  //    Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(builder: (context) =>  FirstMainScreen()),
+                  //     );
+                  //     },
+                  //
+                  //
+                  //       child: Padding(
+                  //         padding: EdgeInsets.only(bottom:22,top:22,left: 6,right: 10),
+                  //         child: Wrap(
+                  //           crossAxisAlignment: WrapCrossAlignment.center,
+                  //           children: <Widget>[
+                  //             Text('عضویت در برنامه', style:TextStyle(fontSize:14,fontWeight: FontWeight.bold,color: Colors.white)),
+                  //             SizedBox(
+                  //               width:120,
+                  //             ),
+                  //         Container(
+                  //               margin: EdgeInsets.all(1),
+                  //               padding: EdgeInsets.all(1),
+                  //               decoration: BoxDecoration(
+                  //                   shape: BoxShape.circle,
+                  //                   border: Border.all(width: 2.0,
+                  //                       color: Colors.white),
+                  //               ),
+                  //               child: Icon(FontAwesomeIcons.arrowLeft, color: Colors.white),
+                  //             ),
+                  //
+                  //
+                  //           ],
+                  //         ),
+                  //       ),
+                  //
+                  // ),
+                ),),
+
               SizedBox(
                 height:20,
               ),

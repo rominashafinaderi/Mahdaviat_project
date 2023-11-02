@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
 class CustomTabBar extends StatelessWidget {
-  const CustomTabBar({super.key});
-
+  const CustomTabBar({super.key, required this.firstTitle, required this.secondTitle});
+  final String firstTitle;
+  final String secondTitle;
   @override
   Widget build(BuildContext context) {
     return  Expanded(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal:20,vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal:30,vertical: 8),
         child: Column(
           children: <Widget>[
             Container(
@@ -17,16 +18,33 @@ class CustomTabBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   color: Colors.white
               ),
-              child: TabBar(
+              child:
+              TabBar(
                 dividerColor: Colors.transparent,
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicatorWeight: 2,
                 indicator: DotIndicator(
-                  tabbarWidth: MediaQuery.of(context).size.width - 2 *20,
+                  tabbarWidth: MediaQuery.of(context).size.width - 2 *30,
                 ),
                 labelColor: Colors.black,
+                  labelStyle: TextStyle(
+                      fontWeight: FontWeight.w700,
+                    fontFamily: 'normal'
+                  ),
+                unselectedLabelStyle: TextStyle(
+                    fontSize: 12.6,
+                    fontFamily: 'normal'
+                ),
                 unselectedLabelColor: Colors.black,
-                tabs: [Tab(text: "همه پست ها"), Tab(text: "همه آلبوم ها")],
+                tabs: [
+                  Tab(
+                    text: firstTitle,
+                  ),
+                  // second tab [you can add an icon using the icon property]
+                  Tab(
+                      text: secondTitle
+                  ),
+                ],
               ),
             )
           ],
@@ -35,6 +53,7 @@ class CustomTabBar extends StatelessWidget {
     );
   }
 }
+
 class DotIndicator extends Decoration {
   DotIndicator({
     this.color = const  Color(0xFF77CF00),
@@ -102,3 +121,4 @@ class _DotPainter extends BoxPainter {
         _paint);
   }
 }
+

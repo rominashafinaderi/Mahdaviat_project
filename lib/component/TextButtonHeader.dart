@@ -32,9 +32,8 @@ class _TextButtonHeaderState extends State<TextButtonHeader> {
       onTap: widget.onPressed,
       child: ClipRRect(
          borderRadius : BorderRadius.circular(20),
-
       child: Container(
-          padding: EdgeInsets.all(10),
+        padding: EdgeInsets.all(10),
           color: widget.isSelected ? Colors.white : null,
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -59,71 +58,3 @@ class _TextButtonHeaderState extends State<TextButtonHeader> {
     );
   }
 }
-// class TextButtonHeader extends StatefulWidget {
-//   @override
-//   State<TextButtonHeader> createState() => _TextButtonHeaderState();
-//
-//   final double iconSize;
-//   final Color iconColor;
-//   final bool isSelected;
-//   final VoidCallback press;
-//   IconData iconData;
-//   String? text;
-//   Color? color ;
-//   void Function()? onPressed2;
-//
-//     TextButtonHeader({
-//     this.iconSize = 17,
-//     this.iconColor = Colors.black54,
-//     required this.iconData,
-//     this.text,
-//     this.color,
-//     this.onPressed2,
-//       required this.isSelected,
-//       required this.press,
-//   });
-// }
-//
-// class _TextButtonHeaderState extends State<TextButtonHeader> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return GestureDetector(
-//       onTap: (){
-//         setState(() {
-//           isSelected = !widget.isSelected;
-//         });
-//         widget.press();
-//       },
-//       child: Container(
-//         color: widget.isSelected ? Colors.white : null,
-//         child: TextButton(
-//           style:ButtonStyle(
-//             overlayColor: MaterialStateColor.resolveWith((states) => Colors.white),
-//
-//           ),
-//           onPressed: widget.onPressed2,
-//           child: Row(
-//             crossAxisAlignment: CrossAxisAlignment.center,
-//             children: [
-//                 Icon(
-//                   widget.iconData,
-//                   size: widget.iconSize,
-//                   color: widget.iconColor,
-//                 ),
-//               SizedBox(width:6),
-//                   Text(
-//                     widget.text!,
-//                     style: TextStyle(
-//                       color: widget.isSelected ? Colors.black : Colors.blueAccent,
-//                     ),
-//                   ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-//
-//   TextDirection? textDirection;
-// }
-
