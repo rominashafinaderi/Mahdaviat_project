@@ -25,7 +25,12 @@ class FolderShapePainter extends CustomPainter {
     canvas.drawRRect(folderShape, paint);
     Path path = Path()
       ..moveTo(size.width * (1 - a), 0)
-      ..lineTo(size.width, size.height * a)..lineTo(size.width, size.height)..lineTo(0, size.height)..lineTo(0, size.height * b)..lineTo(size.width * (1 - 0.7), size.height * b)..lineTo(size.width * (1 - b), 0)
+      ..lineTo(size.width, size.height * a)
+      ..lineTo(size.width, size.height)
+      ..lineTo(0, size.height)
+      ..lineTo(0, size.height * b)
+      ..lineTo(size.width * (1 - 0.7),
+          size.height * b)..lineTo(size.width * (1 - b), 0)
       ..close();
 
     canvas.drawPath(path, paint);
