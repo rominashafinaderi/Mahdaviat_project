@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mahdaviat_project/component/CustomButtomTabBar.dart';
 import 'package:mahdaviat_project/component/FolderShape.dart';
 import 'package:mahdaviat_project/component/TextButtonHeader.dart';
 import 'package:mahdaviat_project/component/customTabBar.dart';
@@ -400,31 +401,8 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                   ],
                 )
             ),
-            Expanded(
-              flex:1,
-              child: Stack(
-                  children:[
-                    Positioned(
-                        bottom: 0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(23)
-                          ),
-                          width: 410,
-                          height:80,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+            CustomButtomTabBar()
 
-
-                            ],
-                          ),
-                        )
-                    ),
-                  ]
-              ),
-            )
           ],
         ),
       ),

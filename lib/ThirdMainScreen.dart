@@ -5,62 +5,29 @@ import 'package:mahdaviat_project/component/FolderShape.dart';
 import 'package:mahdaviat_project/component/TextButtonHeader.dart';
 import 'package:mahdaviat_project/component/customTabBar.dart';
 import 'package:mahdaviat_project/component/customeAppBar.dart';
-import 'package:mahdaviat_project/ThirdMainScreen.dart';
-import 'package:mahdaviat_project/AboutUsScreen.dart';
 
-class SecondMainScreen extends StatefulWidget {
-  const SecondMainScreen({
+class ThirdMainScreen extends StatefulWidget {
+  const ThirdMainScreen({
     super.key,
   });
 
   @override
-  State<SecondMainScreen> createState() => _SecondMainScreenState();
+  State<ThirdMainScreen> createState() => _ThirdMainScreenState();
 }
 
 List<String> imageAddress = [
-  'assets/pic1.png',
   'assets/pic2.jpg',
   'assets/pic3.jpg',
-  'assets/pic4.jpg',
-  'assets/pic1.png',
+  'assets/images.jpg',
+  'assets/download.png',
+  'assets/download.png',
+  'assets/images.jpg',
   'assets/pic2.jpg',
   'assets/pic3.jpg',
-  'assets/pic4.jpg',
-  'assets/pic4.jpg',
-];
-List<String> title = [
-  'کلیپ/استاد رائفی پور-عبرت های بنی اسرائیل',
-  'عکس/آبیاری کوزه ای یا آبیاری تراوا روش های نوین',
-  'صوت/شهید تهرانی مقدم,مغز متفکر ایران در ساخت موشک های مختلف ',
-  ' متن/آیا رفتن ترامپ به معنای شکست فشار حداکثری',
-  'کلیپ/استاد رائفی پور-عبرتهای بنی اسرائیل',
-  'عکس/آبیاری کوزه ای یا آبیاری تراوا روش های نوین',
-  'صوت/شهید تهرانی مقدم,مغز متفکر ایران در ساخت موشک های مختلف ',
-  ' متن/آیا رفتن ترامپ به معنای شکست فشار حداکثری',
-  ' متن/آیا رفتن ترامپ به معنای شکست فشار حداکثری',
-];
-List<IconData> icons = [
-  FontAwesomeIcons.youtube,
-  FontAwesomeIcons.image,
-  FontAwesomeIcons.volumeLow,
-  FontAwesomeIcons.fileLines,
-  FontAwesomeIcons.youtube,
-  FontAwesomeIcons.image,
-  FontAwesomeIcons.volumeLow,
-  FontAwesomeIcons.fileLines,
-  FontAwesomeIcons.fileLines,
 ];
 
 List<Color> colors = [
-  Colors.redAccent,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.redAccent,
+  Colors.greenAccent,
 ];
 List<String> albumTitle = [
   'ارکان ظهور منجی',
@@ -71,7 +38,7 @@ List<String> albumTitle = [
   'توصیه های ظهور',
 ];
 
-class _SecondMainScreenState extends State<SecondMainScreen> {
+class _ThirdMainScreenState extends State<ThirdMainScreen> {
   int selectedIndex = 0;
 
   @override
@@ -81,12 +48,8 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
       child: Scaffold(
         backgroundColor: Color(0xFFF5F8FF),
         appBar: CustomAppBar(
-          onPressed0: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> ThirdMainScreen()));
-          },
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> AboutUsScreen()));
-          },
+          onPressed0: () {},
+          onPressed: () {},
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -103,11 +66,11 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                     decoration: BoxDecoration(
                       boxShadow: selectedIndex == 0
                           ? [
-                              BoxShadow(
-                                color: Colors.grey[400]!.withOpacity(0.5),
-                                blurRadius: 25,
-                              ),
-                            ]
+                        BoxShadow(
+                          color: Colors.grey[400]!.withOpacity(0.5),
+                          blurRadius: 25,
+                        ),
+                      ]
                           : [],
                     ),
                     child: TextButtonHeader(
@@ -126,11 +89,11 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                   decoration: BoxDecoration(
                     boxShadow: selectedIndex == 1
                         ? [
-                            BoxShadow(
-                              color: Colors.grey[400]!.withOpacity(0.5),
-                              blurRadius: 25,
-                            ),
-                          ]
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
                         : [],
                   ),
                   child: TextButtonHeader(
@@ -148,11 +111,11 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                   decoration: BoxDecoration(
                     boxShadow: selectedIndex == 2
                         ? [
-                            BoxShadow(
-                              color: Colors.grey[400]!.withOpacity(0.5),
-                              blurRadius: 25,
-                            ),
-                          ]
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
                         : [],
                   ),
                   child: TextButtonHeader(
@@ -170,11 +133,11 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                   decoration: BoxDecoration(
                     boxShadow: selectedIndex == 3
                         ? [
-                            BoxShadow(
-                              color: Colors.grey[400]!.withOpacity(0.5),
-                              blurRadius: 25,
-                            ),
-                          ]
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
                         : [],
                   ),
                   child: TextButtonHeader(
@@ -192,11 +155,11 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                   decoration: BoxDecoration(
                     boxShadow: selectedIndex == 4
                         ? [
-                            BoxShadow(
-                              color: Colors.grey[400]!.withOpacity(0.5),
-                              blurRadius: 25,
-                            ),
-                          ]
+                      BoxShadow(
+                        color: Colors.grey[400]!.withOpacity(0.5),
+                        blurRadius: 25,
+                      ),
+                    ]
                         : [],
                   ),
                   child: TextButtonHeader(
@@ -223,61 +186,102 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(right: 20, left: 20),
-                      child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisExtent: 160 // <-- *****
-                            ),
+                      child:
+                      // GridView.extent(
+                      //   maxCrossAxisExtent:MediaQuery.sizeOf(context).width/2,
+                      //   padding: const EdgeInsets.all(10),
+                      //   mainAxisSpacing: 30,
+                      //   crossAxisSpacing: 10,
+                      //   children: List.generate(
+                      //     imageAddress.length,
+                      //         (index) {
+                      //       return Container(
+                      //         child: Column(
+                      //           children: [
+                      //             Container(
+                      //               child: Stack(
+                      //                 children: [
+                      //                   ClipRRect(
+                      //                     child: Image.asset(
+                      //                       imageAddress[index],
+                      //                     ),
+                      //                   ),
+                      //
+                      //                        Positioned(
+                      //                           left: 18,
+                      //                           bottom: 18,
+                      //                           child: Container(
+                      //                             width: 40,
+                      //                             height: 40,
+                      //                             decoration: BoxDecoration(
+                      //                               color: Colors.greenAccent,
+                      //                               borderRadius: BorderRadius.circular(8),
+                      //                             ),
+                      //                             child: Icon(
+                      //                               FontAwesomeIcons.image,
+                      //                               color: Colors.white.withOpacity(0.5),
+                      //                               size: 20,
+                      //                             ),
+                      //                           ))
+                      //                 ],
+                      //               ),
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       );
+                      //     },
+                      //   ),
+                      // ),
+                      GridView.builder(
+
+                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                            // // mainAxisExtent:221 ,// <-- *****
+                            // mainAxisSpacing: 15,
+                            // // childAspectRatio: 2/3,
+
+                        ),
                         itemCount: imageAddress.length,
                         itemBuilder: (context, index) {
                           String imageAddress2 = imageAddress[index];
-                          String title2 = title[index];
                           // IconData icon = icons[index];
                           Color color = colors[index % colors.length];
 
                           return Container(
                             padding: EdgeInsets.only(right: index % 2 == 0 ? 10 : 10, left: index % 2 != 0 ? 10 : 10),
+                            // margin: EdgeInsets.only(right: index % 2 == 0 ? 10 : 10, left: index % 2 != 0 ? 10 : 10),
                             width: MediaQuery.sizeOf(context).width / 2,
-                            height: (MediaQuery.sizeOf(context).width / 2),
+                            height: (MediaQuery.sizeOf(context).height ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Stack(children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(22),
-                                    child: AspectRatio(
-                                      aspectRatio: 1,
-                                      child: Image.asset(
+                                    child: Image.asset(
                                         imageAddress2,
-                                        fit: BoxFit.cover,
+                                        // fit: BoxFit.cover,
                                       ),
-                                    ),
+
                                   ),
                                   Container(
                                       child: Positioned(
-                                          left: 12,
-                                          bottom: 11,
+                                          left: 18,
+                                          bottom: 18,
                                           child: Container(
-                                            width: 30,
-                                            height: 30,
+                                            width: 40,
+                                            height: 40,
                                             decoration: BoxDecoration(
                                               color: color,
                                               borderRadius: BorderRadius.circular(8),
                                             ),
                                             child: Icon(
-                                              FontAwesomeIcons.volumeLow,
+                                              FontAwesomeIcons.image,
                                               color: Colors.white.withOpacity(0.5),
-                                              size: 12,
+                                              size: 20,
                                             ),
                                           )))
                                 ]),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 15),
-                                  child: Text(
-                                    title2,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-                                  ),
-                                ),
+
                               ],
                             ),
                           );
@@ -292,7 +296,7 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                             padding: const EdgeInsets.only(right: 22, left: 22),
                             child: GridView.builder(
                               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisExtent: 160 // <-- *****
-                                  ),
+                              ),
                               itemCount: 6,
                               itemBuilder: (context, index) {
                                 if (index == 1) {
