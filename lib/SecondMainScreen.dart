@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mahdaviat_project/component/AppBarWidgets/AppBarActionWidgets.dart';
+import 'package:mahdaviat_project/component/AppBarWidgets/AppBarLeadigWidgets.dart';
+import 'package:mahdaviat_project/component/AppBarWidgets/AppBarTitle.dart';
 import 'package:mahdaviat_project/component/CustomButtomTabBar.dart';
 import 'package:mahdaviat_project/component/FolderShape.dart';
 import 'package:mahdaviat_project/component/TextButtonHeader.dart';
@@ -84,9 +87,13 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
           onPressed0: () {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> ThirdMainScreen()));
           },
-          onPressed: () {
+          color:Color(0xFFF5F8FF),
+          Titletext: AppBarTitle(text: '', textSize: 0),
+          LeadingWidget: ArrowBackWidget(onPressed:(){
             Navigator.push(context, MaterialPageRoute(builder: (context)=> AboutUsScreen()));
-          },
+          } ),
+          ActiongWidget: AppBarActionListWidgets(onPressed: (){},icon:Icon(FontAwesomeIcons.magnifyingGlass),icon2:null,onPressed2: (){}, actionText: '',),
+
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,

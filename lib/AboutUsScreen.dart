@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mahdaviat_project/component/AppBarWidgets/AppBarActionWidgets.dart';
+import 'package:mahdaviat_project/component/AppBarWidgets/AppBarLeadigWidgets.dart';
+import 'package:mahdaviat_project/component/AppBarWidgets/AppBarTitle.dart';
 import 'package:mahdaviat_project/component/customeAppBar.dart';
+import 'package:flutter/animation.dart';
 
 class AboutUsScreen extends StatelessWidget {
+
    AboutUsScreen({super.key});
+
   List<IconData> icons = [
     FontAwesomeIcons.instagram,
     FontAwesomeIcons.envelope,
@@ -15,24 +21,28 @@ class AboutUsScreen extends StatelessWidget {
     FontAwesomeIcons.vectorSquare,
     FontAwesomeIcons.youtube
   ];
-   final List<Color> gradientColors = [
-     Colors.pinkAccent,
-     Colors.grey,
-     Colors.green,
-     Colors.blue,
-     Colors.blueAccent,
-     Colors.lightGreen,
-     Colors.pink,
-     Colors.orange,
-     Colors.red,
+   List<List<Color>> gradientColors = [
+     [Color(0xFFff4caa),Color(0xFFfe01a9)],
+     [Color(0xFF23bd97),Color(0xFF02f177)],
+     [Color(0xFF45b7f4), Color(0xFF01d6fe)],
+     [Color(0xFF439df3),Color(0xFF018cfe)],
+     [Color(0xFF459cec), Color(0xFF008bfe)],
+     [Color(0xFF3e94af), Color(0xFF0065c4)],
+     [Color(0xFFf23470), Color(0xFFf23470)],
+     [Color(0xFFeb8c2e), Color(0xFFff5d05)],
+     [Color(0xFFf80000), Color(0xFFfa0401)],
+
    ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xFFF5F8FF),
         appBar: CustomAppBar(
-          onPressed0: () {},
-          onPressed: () {},
+          color: Color(0xFF115eb6),
+          Titletext: AppBarTitle(text: '', textSize: 0),
+          LeadingWidget: ArrowBackWidget(onPressed: (){}),
+          ActiongWidget: AppBarActionListWidgets(onPressed: (){},icon:Icon(FontAwesomeIcons.magnifyingGlass),icon2:null,onPressed2: (){}, actionText: '',),
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -40,11 +50,7 @@ class AboutUsScreen extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFF0e65b4),
-                Color(0xFF087da9),
-                Color(0xFF058ba6),
-                Color(0xFF019ba5),
-                Color(0xFF01a6a7),
+                Color(0xFF115eb6),
                 Color(0xFF00aeb2),
               ],
             ),
@@ -167,10 +173,14 @@ class AboutUsScreen extends StatelessWidget {
                             crossAxisCount:4,
                           ),
                           itemBuilder: (context, index) {
-                            Color startColor = gradientColors[index];
-                            Color endColor = gradientColors[(index +1) % gradientColors.length];
+                            List<Color> currentGradientColors = gradientColors[index % gradientColors.length];
+                            Color startColor = currentGradientColors[0]; // رنگ شروع گرادیانت اول
+                            Color endColor = currentGradientColors[1];
+
                             LinearGradient gradient = LinearGradient(
-                              colors: [startColor, endColor],
+                              colors: [endColor,startColor ],
+                              begin: Alignment(-1.0, -1.0),
+                              end: Alignment(-1.0,1.0),
                             );
                             return Container(
                               decoration: BoxDecoration(

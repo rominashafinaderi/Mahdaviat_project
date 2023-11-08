@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
- final void Function()? onPressed;
  final void Function()? onPressed0;
-
-   CustomAppBar({
+ final  Color? color ;
+ final Widget Titletext;
+ final Widget LeadingWidget;
+ final Widget ActiongWidget;
+ CustomAppBar({
     Key? key,
-    required this.onPressed, this.onPressed0,
+     this.onPressed0,required this.color, required this.Titletext,  required this.LeadingWidget, required this.ActiongWidget,
   }) : super(key: key);
 
   @override
@@ -22,57 +22,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         statusBarColor: Colors.transparent,
         statusBarIconBrightness: Brightness.dark,
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(top: 10, left: 20),
-          child: IconButton(
-            onPressed: onPressed0,
-            icon: Icon(
-              FontAwesomeIcons.magnifyingGlass,
-              color: Colors.grey[400]!,
-              size: 30,
-            ),
-          ),
-        ),
-      ],
-      title: Padding(
-          padding: const EdgeInsets.only(top: 10, right: 5),
-          child: SizedBox(
-            height: 45,
-            width: 35,
-            child: Container(
-              margin: const EdgeInsets.all(2),
-              padding: EdgeInsets.zero,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  width: 2.0,
-                  color: Colors.grey[400]!,
-                ),
-              ),
-              child:
-              IconButton(
-                onPressed:onPressed,
-                icon: const Icon(
-                  Icons.arrow_back_ios_rounded,
-                  color: Colors.grey,
-                  size: 20,
-                ),
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
-              ),
-            ),
-          ),
-        ),
-
       flexibleSpace: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: Container(
-          color: Color(0xFFF5F8FF),// Set your desired app bar color
+          color: color,// Set your desired app bar color
         ),
       ),
-      backgroundColor: Colors.transparent,
+      actions: [ActiongWidget],
+      title: Titletext,
+      leading: LeadingWidget
     );
   }
-
 }
