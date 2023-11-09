@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mahdaviat_project/component/FilterAppBar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mahdaviat_project/component/checkBox.dart';
 import 'package:mahdaviat_project/filterScreen.dart';
+
+import 'component/AppBarWidgets/AppBarActionWidgets.dart';
+import 'component/AppBarWidgets/AppBarLeadigWidgets.dart';
+import 'component/AppBarWidgets/AppBarTitle.dart';
+import 'component/customeAppBar.dart';
 
 class FilterScreen extends StatefulWidget {
    FilterScreen({super.key});
@@ -28,7 +32,16 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF5F8FF),
-      appBar: filterAppBar(onPressed: (){},),
+      appBar:CustomAppBar(
+        color:Color(0xFFF5F8FF),
+        Titletext: AppBarTitle(text: 'فیلتر مطالب', textSize: 18, centered:false,),
+        LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor:  Colors.grey[400]!,),
+        ActiongWidget:  AppBarActionListWidgets(customWidgets: [
+          GearWidget(iconColor: Colors.white,),
+          SearchWidget(iconColor: Colors.white),
+        ],),
+
+      ),
       body: Column(
         children: [
           SizedBox(height:35),

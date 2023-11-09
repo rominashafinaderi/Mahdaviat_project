@@ -40,9 +40,9 @@ class AboutUsScreen extends StatelessWidget {
         backgroundColor: Color(0xFFF5F8FF),
         appBar: CustomAppBar(
           color: Color(0xFF115eb6),
-          Titletext: AppBarTitle(text: '', textSize: 0),
-          LeadingWidget: ArrowBackWidget(onPressed: (){}),
-          ActiongWidget: AppBarActionListWidgets(onPressed: (){},icon:Icon(FontAwesomeIcons.magnifyingGlass),icon2:null,onPressed2: (){}, actionText: '',),
+          Titletext: null,
+          LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor: Colors.grey[400]!),
+          ActiongWidget:null
         ),
         body: Container(
           decoration: BoxDecoration(

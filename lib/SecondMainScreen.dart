@@ -88,11 +88,13 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
             Navigator.push(context, MaterialPageRoute(builder: (context)=> ThirdMainScreen()));
           },
           color:Color(0xFFF5F8FF),
-          Titletext: AppBarTitle(text: '', textSize: 0),
+          Titletext: AppBarTitle(text: 'فیلتر مطالب', textSize: 17, centered: false,),
           LeadingWidget: ArrowBackWidget(onPressed:(){
             Navigator.push(context, MaterialPageRoute(builder: (context)=> AboutUsScreen()));
-          } ),
-          ActiongWidget: AppBarActionListWidgets(onPressed: (){},icon:Icon(FontAwesomeIcons.magnifyingGlass),icon2:null,onPressed2: (){}, actionText: '',),
+          }, iconColor:  Colors.grey[400]!, ),
+          ActiongWidget:  AppBarActionListWidgets(customWidgets: [
+           Trash_TextWidget(),
+           ],),
 
         ),
         body: Column(

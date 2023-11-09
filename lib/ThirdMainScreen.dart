@@ -52,9 +52,12 @@ class _ThirdMainScreenState extends State<ThirdMainScreen> {
         appBar: CustomAppBar(
           onPressed0: () {},
           color:Color(0xFFF5F8FF),
-          Titletext: AppBarTitle(text: '', textSize: 0),
-          LeadingWidget: ArrowBackWidget(onPressed: (){}),
-          ActiongWidget: AppBarActionListWidgets(onPressed: (){},icon:Icon(FontAwesomeIcons.magnifyingGlass),icon2:null,onPressed2: (){}, actionText: '',),
+          Titletext: AppBarTitle(text: '', textSize: 0, centered: false,),
+          LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor:  Colors.grey[400]!,),
+          ActiongWidget: AppBarActionListWidgets(customWidgets: [
+            GearWidget(iconColor: Colors.deepOrange,),
+            SearchWidget(iconColor: Colors.white),
+          ],),
 
         ),
         body: Column(

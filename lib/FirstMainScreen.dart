@@ -69,15 +69,15 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
       child: Scaffold(
         backgroundColor: Color(0xFFF5F8FF),
         appBar: CustomAppBar(
-          onPressed0:  () {
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));
-          },
           color:Color(0xFFF5F8FF),
-          Titletext: AppBarTitle(text: '', textSize: 0),
+          Titletext: AppBarTitle(text: '', textSize: 0, centered:false,),
           LeadingWidget: ArrowBackWidget(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=> FilterScreen()));
-          }),
-          ActiongWidget: AppBarActionListWidgets(onPressed: (){},icon:Icon(FontAwesomeIcons.magnifyingGlass),icon2:null,onPressed2: (){}, actionText: '',),
+          }, iconColor:  Colors.grey[400]!,),
+          ActiongWidget: AppBarActionListWidgets(customWidgets: [
+            GearWidget(iconColor: Colors.white,),
+            SearchWidget(iconColor: Colors.white),
+          ],),
 
 
 

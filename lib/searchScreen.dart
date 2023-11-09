@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mahdaviat_project/component/searchAppBar.dart';
+import 'component/AppBarWidgets/AppBarActionWidgets.dart';
+import 'component/AppBarWidgets/AppBarLeadigWidgets.dart';
+import 'component/AppBarWidgets/AppBarTitle.dart';
+import 'component/customeAppBar.dart';
 
 class SearchScreen extends StatelessWidget {
   SearchScreen({super.key});
@@ -10,7 +13,16 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF5F8FF),
-      appBar: SearchAppBar(onPressed: () {}, onPressed0: () {}),
+      appBar:CustomAppBar(
+        color:Color(0xFFF5F8FF),
+        Titletext: AppBarTitle(text: 'جستجوی پیشرفته', textSize: 18, centered:true,),
+        LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor:  Colors.grey[400]!,),
+        ActiongWidget:  AppBarActionListWidgets(customWidgets: [
+          GearWidget(iconColor: Colors.white,),
+          SearchWidget(iconColor: Colors.white),
+        ],),
+
+      ),
       body: Column(
         children: [
           SizedBox(height: 20),

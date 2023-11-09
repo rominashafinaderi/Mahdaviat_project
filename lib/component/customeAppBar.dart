@@ -1,36 +1,41 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
- final void Function()? onPressed0;
- final  Color? color ;
- final Widget Titletext;
- final Widget LeadingWidget;
- final Widget ActiongWidget;
- CustomAppBar({
-    Key? key,
-     this.onPressed0,required this.color, required this.Titletext,  required this.LeadingWidget, required this.ActiongWidget,
-  }) : super(key: key);
+  import 'package:flutter/material.dart';
+  import 'package:flutter/services.dart';
+  class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+    final void Function()? onPressed0;
+    final Color? color;
+    final Widget? Titletext;
+    final Widget? LeadingWidget;
+    final Widget? ActiongWidget;
 
-  @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+    CustomAppBar({
+      Key? key,
+      this.onPressed0,
+      required this.color,
+      required this.Titletext,
+      required this.LeadingWidget,
+      required this.ActiongWidget,
+    }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-      flexibleSpace: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: Container(
-          color: color,// Set your desired app bar color
+    @override
+    Size get preferredSize => Size.fromHeight(kToolbarHeight);
+
+    @override
+    Widget build(BuildContext context) {
+      return AppBar(
+        automaticallyImplyLeading: false,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.dark,
         ),
-      ),
-      actions: [ActiongWidget],
-      title: Titletext,
-      leading: LeadingWidget
-    );
+        flexibleSpace: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: Container(
+            color: color,
+          ),
+        ),
+        actions: ActiongWidget != null ? [ActiongWidget!] : null,
+        title: Titletext,
+        leading: LeadingWidget,
+      );
+    }
   }
-}
