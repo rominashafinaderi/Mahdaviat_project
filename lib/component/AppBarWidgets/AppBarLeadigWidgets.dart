@@ -11,7 +11,7 @@ class ArrowBackWidget extends StatelessWidget {
     return Transform.translate(
       offset: Offset(-10,10),
       child: Container(
-          margin: const EdgeInsets.all(11),
+          margin: const EdgeInsets.all(12),
           padding: EdgeInsets.zero,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
@@ -25,7 +25,7 @@ class ArrowBackWidget extends StatelessWidget {
             icon: Icon(
               Icons.arrow_back_ios_rounded,
               color: iconColor,
-              size: 20,
+              size: 19,
             ),
             padding: EdgeInsets.zero,
             constraints: BoxConstraints(),

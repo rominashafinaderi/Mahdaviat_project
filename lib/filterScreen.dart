@@ -37,8 +37,7 @@ class _FilterScreenState extends State<FilterScreen> {
         Titletext: AppBarTitle(text: 'فیلتر مطالب', textSize: 18, centered:false,),
         LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor:  Colors.grey[400]!,),
         ActiongWidget:  AppBarActionListWidgets(customWidgets: [
-          GearWidget(iconColor: Colors.white,),
-          SearchWidget(iconColor: Colors.white),
+          Trash_TextWidget(),
         ],),
 
       ),

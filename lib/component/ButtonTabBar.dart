@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 class ButtonTabBar extends StatefulWidget {
   final bool isSelected;
   final String text;
-  final VoidCallback onPressed;
 
   const ButtonTabBar({
     Key? key,
     required this.text,
-    required this.onPressed,
     required this.isSelected,
   }) : super(key: key);
 
@@ -18,9 +16,7 @@ class ButtonTabBar extends StatefulWidget {
 class _ButtonTabBarState extends State<ButtonTabBar> {
   @override
   Widget build(BuildContext context) {
-    return  GestureDetector(
-      onTap: widget.onPressed,
-      child: Container(
+    return  Container(
           padding: EdgeInsets.all(17),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -28,16 +24,6 @@ class _ButtonTabBarState extends State<ButtonTabBar> {
             children: [
               Stack(
                 children: [
-
-                    //  Container(
-                    //     margin: EdgeInsets.only(right:15),
-                    //     width: 11,
-                    //     height: 2,
-                    //     decoration: BoxDecoration(
-                    //         color: widget.isSelected ? Color(0xFF58d3bd):Colors.white,
-                    //         borderRadius: BorderRadius.circular(2)),
-                    //
-                    // ),
                   Text(
                         widget.text,
                         style: TextStyle(
@@ -46,14 +32,10 @@ class _ButtonTabBarState extends State<ButtonTabBar> {
                             fontWeight: FontWeight.bold
                         ),
                       ),
-
-
                 ],
               ),
             ],
           ),
-        ),
-
     );
   }
 }

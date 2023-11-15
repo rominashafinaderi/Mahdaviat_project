@@ -37,12 +37,15 @@ class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFF5F8FF),
         appBar: CustomAppBar(
           color: Color(0xFF115eb6),
           Titletext: null,
           LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor: Colors.grey[400]!),
-          ActiongWidget:null
+          ActiongWidget:AppBarActionListWidgets(
+            customWidgets: [
+              EllipsisWidget(iconColor: Colors.grey[400]!,)
+            ],
+          )
         ),
         body: Container(
           decoration: BoxDecoration(
