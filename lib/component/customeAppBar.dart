@@ -1,7 +1,6 @@
   import 'package:flutter/material.dart';
   import 'package:flutter/services.dart';
   class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-    final void Function()? onPressed0;
     final Color? color;
     final Widget? Titletext;
     final Widget? LeadingWidget;
@@ -9,7 +8,6 @@
 
     CustomAppBar({
       Key? key,
-      this.onPressed0,
       required this.color,
       required this.Titletext,
       required this.LeadingWidget,

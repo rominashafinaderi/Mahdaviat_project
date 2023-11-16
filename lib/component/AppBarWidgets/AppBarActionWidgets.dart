@@ -29,16 +29,19 @@ class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Transform.translate(
-      offset: Offset(-20, 10),
-      child: IconButton(
-        onPressed:onPressed,
-        icon: Icon(
-          FontAwesomeIcons.magnifyingGlass,
-          color: iconColor,
-          size:32,
+      offset: Offset(-20, 8),
+      child: Container(
+        
+        child: IconButton(
+          onPressed:onPressed,
+          icon: Icon(
+            FontAwesomeIcons.magnifyingGlass,
+            color: iconColor,
+            size:30,
+          ),
+          padding: EdgeInsets.all(5),
+          constraints: BoxConstraints(),
         ),
-        padding: EdgeInsets.zero,
-        constraints: BoxConstraints(),
       ),
     );
   }
@@ -59,7 +62,7 @@ class EllipsisWidget extends StatelessWidget {
           color: iconColor,
           size:26,
         ),
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.all(5),
         constraints: BoxConstraints(),
       ),
     );
@@ -78,16 +81,16 @@ class TeashWidget extends StatelessWidget {
         icon: Icon(
           FontAwesomeIcons.trash,
           color: iconColor,
-          size:28,
+          size:25,
         ),
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.all(5),
         constraints: BoxConstraints(),
       ),
     );
   }
 }
-class PencilWidge extends StatelessWidget {
-  const PencilWidge({super.key, this.onPressed, required this.iconColor});
+class PencilWidget extends StatelessWidget {
+  const PencilWidget({super.key, this.onPressed, required this.iconColor});
   final void Function()? onPressed;
   final Color iconColor;
   @override
@@ -101,7 +104,7 @@ class PencilWidge extends StatelessWidget {
           color: iconColor,
           size:23,
         ),
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.all(5),
         constraints: BoxConstraints(),
       ),
     );
@@ -114,15 +117,15 @@ class GearWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Transform.translate(
-      offset: Offset(-20, 10),
+      offset: Offset(-20, 11),
       child: IconButton(
         onPressed:onPressed,
         icon: Icon(
           FontAwesomeIcons.gear,
           color: iconColor,
-          size:32,
+          size:28,
         ),
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.all(3),
         constraints: BoxConstraints(),
       ),
     );
@@ -145,7 +148,7 @@ class Trash_TextWidget extends StatelessWidget {
           onTap: (){},
           child: GestureDetector(
             child: Container(
-
+              margin: EdgeInsets.all(8),
               child: Row(
                 children: [
                      Text('پاک کردن همه',
@@ -176,7 +179,7 @@ class QuestionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return
       Transform.translate(
-        offset: Offset(-20, 10),
+        offset: Offset(-10, 10),
         child: InkWell(
           customBorder: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),

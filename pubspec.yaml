@@ -72,6 +72,7 @@ flutter:
         - assets/download.png
         - assets/images.jpg
         - assets/dd.jpg
+        - assets/json/
 
 
 

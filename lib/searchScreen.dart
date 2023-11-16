@@ -18,7 +18,7 @@ class SearchScreen extends StatelessWidget {
         Titletext: AppBarTitle(text: 'جستجوی پیشرفته', textSize: 18, centered:true,),
         LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor:  Colors.grey[400]!,),
         ActiongWidget:  AppBarActionListWidgets(customWidgets: [
-          EllipsisWidget(iconColor: Colors.grey[400]!)
+          EllipsisWidget(iconColor: Colors.grey[400]!,onPressed:(){},)
         ],),
 
       ),

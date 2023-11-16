@@ -8,7 +8,7 @@ class CustomTabBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Expanded(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal:30,vertical:5),
+        padding: EdgeInsets.symmetric(horizontal:30),
         child: Column(
           children: <Widget>[
             Container(

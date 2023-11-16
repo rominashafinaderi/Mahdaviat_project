@@ -35,23 +35,31 @@ class ArrowBackWidget extends StatelessWidget {
   }
 }
 
-class DrawerWidet extends StatelessWidget {
-  const DrawerWidet({super.key, this.onPressed, required this.iconColor});
+class DrawerWidget extends StatelessWidget {
+  const DrawerWidget({super.key, this.onPressed, required this.iconColor});
   final void Function()? onPressed;
   final Color iconColor;
   @override
   Widget build(BuildContext context) {
     return  Transform.translate(
-      offset: Offset(-20, 10),
-      child: IconButton(
-        onPressed:onPressed,
-        icon: Icon(
-          Icons.list_rounded,
-          color: iconColor,
-          size:50,
-        ),
+      offset: Offset(-20,5),
+      child:
+      Container(
+        margin: const EdgeInsets.all(5),
         padding: EdgeInsets.zero,
-        constraints: BoxConstraints(),
+        decoration: BoxDecoration(
+
+        ),
+        child: IconButton(
+          onPressed:onPressed,
+          icon: Icon(
+            Icons.list_rounded,
+            color: iconColor,
+            size:40,
+          ),
+          padding: EdgeInsets.zero,
+          constraints: BoxConstraints(),
+        ),
       ),
     );
   }
