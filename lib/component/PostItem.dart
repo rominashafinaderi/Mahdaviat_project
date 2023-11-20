@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import '../models/post.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class PostItem extends StatefulWidget {
   const PostItem({
@@ -17,6 +16,7 @@ class PostItem extends StatefulWidget {
   @override
   State<PostItem> createState() => _PostItemState();
 }
+
 class _PostItemState extends State<PostItem> {
   bool _enabled = true;
   Map<String, IconData> icons = {"video": FontAwesomeIcons.youtube, "photo": FontAwesomeIcons.image, "sound": FontAwesomeIcons.volumeLow, "text": FontAwesomeIcons.fileLines};
@@ -26,72 +26,74 @@ class _PostItemState extends State<PostItem> {
     "sound": Colors.orange,
     "text": Colors.purple,
   };
+
   @override
   void initState() {
     super.initState();
-    _enabled = true;
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        _enabled = false;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: widget.post.image ?? '',
-      fit: BoxFit.cover,
-      placeholder: (context, url) => Skeletonizer(
-        enabled: _enabled,
-        child: Container(
-          width: MediaQuery.of(context).size.width / 2,
-          height: MediaQuery.of(context).size.width / 2,
-        ),
-      ),
-      errorWidget: (context, url, error) {
-        setState(() {
-          _enabled = false;
-        });
-        return Center(
-          child: Text(
-            'No internet connection!',
-            style: TextStyle(color: Colors.redAccent),
-          ),
-        );
-      },
-      imageBuilder: (context, imageProvider) {
-        setState(() {
-          _enabled = false;
-        });
-        return Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(22),
-            image: DecorationImage(
-              image: imageProvider,
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Stack(
-            children: [
-              Container(
-                child: Positioned(
-                  left: 18,
-                  bottom: 18,
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: colors[widget.post.type],
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Icon(
-                      icons[widget.post.type],
-                      color: Colors.white.withOpacity(0.5),
-                      size: 24,
-                    ),
+    return Skeletonizer(
+      enabled: _enabled,
+      child: Container(
+        padding: widget.padding,
+        width: MediaQuery.of(context).size.width / 2,
+        height: (MediaQuery.of(context).size.width / 2),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(22),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Image.network(
+                      widget.post.image ?? '',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Center(child: Text('no internet connection!',style: TextStyle(color: Colors.redAccent),),);
+                      },
+
                   ),
+
                 ),
               ),
-            ],
-          ),
-        );
-      },
+              Container(
+                  child: Positioned(
+                      left: 18,
+                      bottom: 18,
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          color:colors[widget.post.type],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Icon(
+                          icons[widget.post.type],
+                          color: Colors.white.withOpacity(0.5),
+                          size: 24,
+                        ),
+                      )))
+            ]),
+            Padding(
+              padding: const EdgeInsets.only(top: 13),
+              child: Text(
+                "${widget.post.typeFa} / ${widget.post.title}",
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
