@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mahdaviat_project/component/checkBox.dart';
-import 'package:mahdaviat_project/filterScreen.dart';
 
 import 'component/AppBarWidgets/AppBarActionWidgets.dart';
 import 'component/AppBarWidgets/AppBarLeadigWidgets.dart';
@@ -16,6 +14,7 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
+  List<bool> isCheckedList = [false, false];
   List<String> title = [
     'انتخاب دسته بندی',
     'انتخاب سخنران',
@@ -26,8 +25,12 @@ class _FilterScreenState extends State<FilterScreen> {
      'فقط پست تصویری',
      'فقط با ذکر منبع',
    ];
-  bool _isChecked = false;
 
+  void disableCheckboxes() {
+    setState(() {
+      isCheckedList = List<bool>.generate(isCheckedList.length, (_) => false);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +40,8 @@ class _FilterScreenState extends State<FilterScreen> {
         Titletext: AppBarTitle(text: 'فیلتر مطالب', textSize: 18, centered:false,),
         LeadingWidget: ArrowBackWidget(onPressed: (){}, iconColor:  Colors.grey[400]!,),
         ActiongWidget:  AppBarActionListWidgets(customWidgets: [
-          Trash_TextWidget(),
+          Trash_TextWidget(onPressed: disableCheckboxes),
+
         ],),
 
       ),
@@ -108,57 +112,92 @@ class _FilterScreenState extends State<FilterScreen> {
               ),
             ),
           ),
-          Expanded(
-            flex: 3,
-            child: Padding(
-              padding: const EdgeInsets.only(left:25,right: 25),
-              child: ListView.builder(
-                itemCount:2,
-                itemBuilder: (context, index) => Card(
-                  elevation: 0,
-                  surfaceTintColor: Colors.white,
-                  shape: RoundedRectangleBorder(
+        Expanded(
+          flex: 3,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 25, right: 25),
+            child: ListView.builder(
+              itemCount: 2,
+              itemBuilder: (context, index) => Card(
+                elevation: 0,
+                surfaceTintColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: InkWell(
+                  customBorder: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: InkWell(
-                    customBorder: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    highlightColor:Color(0xFFeef0fc),
-                    splashColor:Color(0xFFeef0fc),
-                    onTap: () {},
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
-                      child: Row(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(FontAwesomeIcons.list,
-                                  color:Color(0xFF0ad9b8),
-                                size: 20,
+                  highlightColor: Color(0xFFeef0fc),
+                  splashColor: Color(0xFFeef0fc),
+                  onTap: () {
+                    setState(() {
+                      isCheckedList[index] = !isCheckedList[index];
+                    });
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 15),
+                    child: Row(
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.list,
+                              color: Color(0xFF0ad9b8),
+                              size: 20,
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              title2[index],
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
                               ),
-                              SizedBox(width: 10),
-                              Text(title2[index],
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12
-                                ),),
-                            ],
-                          ),
-                         Spacer(),
-                          Row(
-                            children: [
-                              CheckboxExample(),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                        Spacer(),
+                        Row(
+                          children: [
+                            Text(
+                              isCheckedList[index] ? 'فعال است' : 'غیر فعال',
+                              style: TextStyle(
+                                color: Colors.grey[400],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 10,
+                              ),
+                            ),
+                            Checkbox(
+                              value: isCheckedList[index],
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isCheckedList[index] = value!;
+                                });
+                              },
+                              fillColor: MaterialStateProperty.resolveWith(
+                                    (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.selected)) {
+                                    return Color(0xFF0ad9b8);
+                                  }
+                                  return Color(0xFFeef0fc);
+                                },
+                              ),
+                              checkColor: Colors.white,
+                              side: BorderSide.none,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
             ),
           ),
+        ),
           SizedBox(height:55),
           Expanded(
              flex: 1,

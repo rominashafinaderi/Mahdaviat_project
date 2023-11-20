@@ -60,7 +60,7 @@ class AboutUsScreen extends StatelessWidget {
           ),
           child: Column(children: [
             SizedBox(
-              height: 20,
+              height:18,
             ),
             Container(
               decoration: BoxDecoration(
@@ -112,24 +112,24 @@ class AboutUsScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 40,
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 110),
+              padding: const EdgeInsets.only(left: 90),
               child: Text(
                 'واحد مهدویت موسسه\n مصاف ایرانیان',
                 textDirection: TextDirection.rtl,
-                style: TextStyle(fontFamily: 'bold', fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(fontFamily: 'bold', fontSize: 23, fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
             SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.only(right:25,left: 30),
+              padding: const EdgeInsets.only(right:40,left: 25),
               child: Text('هدف نشر رسانه در حوزه مهدویت در این دوران آخرالزمان\nو فرهنگ سازی مهدویت اعتقاد به منجی و ولی کامل\nباوری مقطعی و مربوط به شرایط و وضعیت خاص گذشته\nیا حال یا آینده نیست,بلکه از باور های اساسی در همه \nادیان است.چنانچه گفتیم,این باور در تشیع جایگاه ویژه ',
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(fontFamily: 'normal', fontSize:15, color: Colors.white,
+                  style: TextStyle(fontFamily: 'normal', fontSize:14, color: Colors.white,
                   )
               ),
             ),
@@ -148,32 +148,31 @@ class AboutUsScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(35),
                   child: Column(
                     children: [
-                      Row(
-                        children: [
+
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text('مصاف در شبکه های اجتماعی',
                                 textDirection: TextDirection.rtl,
-                                style: TextStyle(fontFamily: 'bold', fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),),
-                              SizedBox(width: 65),
+                                style: TextStyle(fontFamily: 'bold', fontSize: 14, fontWeight: FontWeight.bold, color: Colors.black),),
+                              SizedBox(width: 55),
                               Icon(Icons.person_outline,color:Color(0xFF43c7b1),size: 35,)
                             ],
                           ),
-                        ],
-                      ),
+
                       Padding(
                         padding: const EdgeInsets.only(left:25),
                         child: Text('دریافت آخرین خبر ها و اطلاعیه های حوزه مهدویت در مصاف',
                           style: TextStyle(fontFamily: 'bold', fontSize: 10, fontWeight: FontWeight.bold, color: Colors.grey[500]),),
                       ),
-                      SizedBox(height: 17),
+                      SizedBox(height: 3),
                       Container(
-                        height:214,
+                        height: 210,
                         child: GridView.builder(
-                          itemCount:9,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: 9,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount:4,
+                            crossAxisCount: 4,
                           ),
                           itemBuilder: (context, index) {
                             List<Color> currentGradientColors = gradientColors[index % gradientColors.length];
@@ -198,24 +197,8 @@ class AboutUsScreen extends StatelessWidget {
                             );
                           },
                         ),
-
-
-                        // GridView.count(crossAxisCount: 4,
-                        //   children: List.generate(9, (index){
-                        //     return Container(
-                        //       margin: EdgeInsets.all(6),
-                        //       decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(18),
-                        //         color: Colors.grey
-                        //       ),
-                        //       child: Icon(icons[index],size:25,color: Colors.white,),
-                        //       height:45,
-                        //       width: 45,
-                        //     );
-                        //   }),
-                        //
-                        // ),
                       )
+
                     ],
                   ),
                 ),

@@ -1,16 +1,22 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mahdaviat_project/component/AlbumWidget.dart';
 import 'package:mahdaviat_project/component/AppBarWidgets/AppBarActionWidgets.dart';
 import 'package:mahdaviat_project/component/AppBarWidgets/AppBarLeadigWidgets.dart';
 import 'package:mahdaviat_project/component/AppBarWidgets/AppBarTitle.dart';
 import 'package:mahdaviat_project/component/CustomButtomTabBar.dart';
-import 'package:mahdaviat_project/component/FolderShape.dart';
 import 'package:mahdaviat_project/component/HeaderWidget.dart';
+import 'package:mahdaviat_project/component/PostItemSecond.dart';
 import 'package:mahdaviat_project/component/customTabBar.dart';
 import 'package:mahdaviat_project/component/customeAppBar.dart';
 import 'package:mahdaviat_project/ThirdMainScreen.dart';
 import 'package:mahdaviat_project/AboutUsScreen.dart';
+import 'package:mahdaviat_project/helpers.dart';
+
+import 'component/GridVIewWidget.dart';
+import 'models/album.dart';
+import 'models/post.dart';
 
 class SecondMainScreen extends StatefulWidget {
   const SecondMainScreen({
@@ -21,63 +27,12 @@ class SecondMainScreen extends StatefulWidget {
   State<SecondMainScreen> createState() => _SecondMainScreenState();
 }
 
-List<String> imageAddress = [
-  'assets/pic1.png',
-  'assets/pic2.jpg',
-  'assets/pic3.jpg',
-  'assets/pic4.jpg',
-  'assets/pic1.png',
-  'assets/pic2.jpg',
-  'assets/pic3.jpg',
-  'assets/pic4.jpg',
-  'assets/pic4.jpg',
-];
-List<String> title = [
-  'کلیپ/استاد رائفی پور-عبرت های بنی اسرائیل',
-  'عکس/آبیاری کوزه ای یا آبیاری تراوا روش های نوین',
-  'صوت/شهید تهرانی مقدم,مغز متفکر ایران در ساخت موشک های مختلف ',
-  ' متن/آیا رفتن ترامپ به معنای شکست فشار حداکثری',
-  'کلیپ/استاد رائفی پور-عبرتهای بنی اسرائیل',
-  'عکس/آبیاری کوزه ای یا آبیاری تراوا روش های نوین',
-  'صوت/شهید تهرانی مقدم,مغز متفکر ایران در ساخت موشک های مختلف ',
-  ' متن/آیا رفتن ترامپ به معنای شکست فشار حداکثری',
-  ' متن/آیا رفتن ترامپ به معنای شکست فشار حداکثری',
-];
-List<IconData> icons = [
-  FontAwesomeIcons.youtube,
-  FontAwesomeIcons.image,
-  FontAwesomeIcons.volumeLow,
-  FontAwesomeIcons.fileLines,
-  FontAwesomeIcons.youtube,
-  FontAwesomeIcons.image,
-  FontAwesomeIcons.volumeLow,
-  FontAwesomeIcons.fileLines,
-  FontAwesomeIcons.fileLines,
-];
 
-List<Color> colors = [
-  Colors.redAccent,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.orange,
-  Colors.redAccent,
-];
-List<String> albumTitle = [
-  'ارکان ظهور منجی',
-  'رساله مهدویت',
-  'توصیه های ظهور',
-  'ارکان ظهور منجی',
-  'رساله مهدویت',
-  'توصیه های ظهور',
-];
 
 class _SecondMainScreenState extends State<SecondMainScreen> {
   int selectedIndex = 0;
   StreamController<bool> _loadingStreamController = StreamController<bool>();
+  List<Post> posts2= [];
 
   @override
   void dispose() {
@@ -91,6 +46,21 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
       _loadingStreamController.sink.add(false);
     });
   }
+  @override
+  void initState() {
+    super.initState();
+    fetchPosts();
+  }
+
+  void fetchPosts() async {
+    String jsonString = await loadTextAsset(getJsonPath("postList2.json"));
+    var json = jsonDecode(jsonString);
+    for (final item in json["posts"]) {
+      posts2.add(Post.fromJson(item));
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -137,180 +107,19 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(right: 20, left: 20),
-                          child: GridView.builder(
-                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisExtent: 160 // <-- *****
-                            ),
-                            itemCount: imageAddress.length,
-                            itemBuilder: (context, index) {
-                              String imageAddress2 = imageAddress[index];
-                              String title2 = title[index];
-                              // IconData icon = icons[index];
-                              Color color = colors[index % colors.length];
-
-                              return Container(
-                                padding: EdgeInsets.only(right: index % 2 == 0 ? 10 : 10, left: index % 2 != 0 ? 10 : 10),
-                                width: MediaQuery
-                                    .sizeOf(context)
-                                    .width / 2,
-                                height: (MediaQuery
-                                    .sizeOf(context)
-                                    .width / 2),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Stack(children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(22),
-                                        child: AspectRatio(
-                                          aspectRatio: 1,
-                                          child: Image.asset(
-                                            imageAddress2,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                          child: Positioned(
-                                              left: 12,
-                                              bottom: 11,
-                                              child: Container(
-                                                width: 30,
-                                                height: 30,
-                                                decoration: BoxDecoration(
-                                                  color: color,
-                                                  borderRadius: BorderRadius.circular(8),
-                                                ),
-                                                child: Icon(
-                                                  FontAwesomeIcons.volumeLow,
-                                                  color: Colors.white.withOpacity(0.5),
-                                                  size: 12,
-                                                ),
-                                              )))
-                                    ]),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 15),
-                                      child: Text(
-                                        title2,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                         child: GridViewWidget(
+                            itemCount: posts2.length,
+                            crossCount:3,
+                            mainExtent: 160,
+                            GridWidget: (int index) {
+                              return PostItem_2(
+                                  padding: EdgeInsets.only(right: index % 2 == 0 ? 10 : 10, left: index % 2 != 0 ? 10 : 10),
+                                  post2:posts2[index]
                               );
                             },
                           ),
                         ),
-                        Column(
-                          children: [
-                            Expanded(
-                              flex: 8,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 22, left: 22),
-                                child: GridView.builder(
-                                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisExtent: 160 // <-- *****
-                                  ),
-                                  itemCount: 6,
-                                  itemBuilder: (context, index) {
-                                    if (index == 1) {
-                                      return Container(
-                                        width: 100,
-                                        height: 100,
-                                        child: Column(
-                                          children: [
-                                            Stack(children: [
-                                              Container(
-                                                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-                                                height: 100,
-                                                width: 100,
-                                                margin: EdgeInsets.all(10),
-                                                padding: EdgeInsets.all(10),
-                                                child: CustomPaint(
-                                                  painter: FolderShapePainter(color: Color(0xFFe9ebfa)),
-                                                ),
-                                              ),
-                                              Container(
-                                                  child: Positioned(
-                                                      left: 28,
-                                                      bottom: 28,
-                                                      child: Container(
-                                                        width: 22,
-                                                        height: 22,
-                                                        decoration: BoxDecoration(
-                                                          color: Color(0xFF00e0be),
-                                                          borderRadius: BorderRadius.circular(8),
-                                                        ),
-                                                        child: Icon(
-                                                          FontAwesomeIcons.solidStar,
-                                                          color: Colors.white,
-                                                          size: 11,
-                                                        ),
-                                                      )))
-                                            ]),
-                                            SizedBox(height: 5),
-                                            Text(
-                                              albumTitle[index],
-                                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    } else if (index == 2) {
-                                      return Container(
-                                        width: 100,
-                                        height: 100,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-                                              height: 100,
-                                              width: 100,
-                                              margin: EdgeInsets.all(10),
-                                              padding: EdgeInsets.all(10),
-                                              child: CustomPaint(
-                                                painter: FolderShapePainter(color: Color(0xFF82ebe4)),
-                                              ),
-                                            ),
-                                            SizedBox(height: 5),
-                                            Text(
-                                              albumTitle[index],
-                                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    } else {
-                                      return Container(
-                                        width: 100,
-                                        height: 100,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-                                              height: 100,
-                                              width: 100,
-                                              margin: EdgeInsets.all(10),
-                                              padding: EdgeInsets.all(10),
-                                              child: CustomPaint(
-                                                painter: FolderShapePainter(color: Color(0xFFe9ebfa)),
-                                              ),
-                                            ),
-                                            SizedBox(height: 5),
-                                            Text(
-                                              albumTitle[index],
-                                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                        AlbumWidget( ),
                       ],
                     );
                   }
@@ -327,3 +136,4 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
     );
   }
 }
+

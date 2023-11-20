@@ -132,7 +132,8 @@ class GearWidget extends StatelessWidget {
   }
 }
 class Trash_TextWidget extends StatelessWidget {
-  const Trash_TextWidget({super.key});
+  const Trash_TextWidget({super.key, this.onPressed});
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +146,7 @@ class Trash_TextWidget extends StatelessWidget {
           ),
           highlightColor:Color(0xFFeef0fc),
           splashColor:Color(0xFFeef0fc),
-          onTap: (){},
+          onTap: onPressed,
           child: GestureDetector(
             child: Container(
               margin: EdgeInsets.all(8),
