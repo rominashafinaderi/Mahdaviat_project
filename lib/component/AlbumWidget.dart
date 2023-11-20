@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mahdaviat_project/models/album.dart';
 import '../helpers.dart';
-import 'AlbumWidget.dart';
 import 'FolderShape.dart';
 import 'GridVIewWidget.dart';
 
@@ -24,7 +22,7 @@ class _AlbumWidgetState extends State<AlbumWidget> {
     fetchAlbums();
   }
 
-  void fetchAlbums() async {
+  Future<void> fetchAlbums() async {
     String jsonString = await loadTextAsset(getJsonPath("albumList.json"));
     var json = jsonDecode(jsonString);
     for (final item in json["album"]) {
@@ -35,25 +33,27 @@ class _AlbumWidgetState extends State<AlbumWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return albums.isEmpty
-        ? CircularProgressIndicator()
-        : Column(
+    return  Column(
       children: [
         Expanded(
           flex: 8,
           child: Padding(
             padding: const EdgeInsets.only(right: 22, left: 22),
-            child: GridViewWidget(
+            child :RefreshIndicator(
+              onRefresh:fetchAlbums,
+              child: GridViewWidget(
               itemCount: albums.length,
               crossCount: 3,
               mainExtent: 160,
               GridWidget: (int index) {
-                return GridItemWidget(
-                  index: index,
-                  album: albums[index],
+                return  GridItemWidget(
+                    index: index,
+                    album: albums[index],
+
                 );
               },
             ),
+            )
           ),
         ),
       ],
@@ -71,8 +71,8 @@ class GridItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (index == 1) {
       return Container(
-        width: 100,
-        height: 100,
+        // width: 100,
+        // height: 100,
         child: Column(
           children: [
             Stack(
@@ -119,8 +119,8 @@ class GridItemWidget extends StatelessWidget {
       );
     } else if (index == 2) {
       return Container(
-        width: 100,
-        height: 100,
+        // width: 100,
+        // height: 100,
         child: Column(
           children: [
             Container(
@@ -146,8 +146,8 @@ class GridItemWidget extends StatelessWidget {
       );
     }  else {
       return Container(
-        width: 100,
-        height: 100,
+        // width: 100,
+        // height: 100,
         child: Column(
           children: [
             Container(

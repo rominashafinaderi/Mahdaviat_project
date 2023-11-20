@@ -47,22 +47,20 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
    fetchPosts();
   }
 
-  void fetchPosts() async {
+
+  Future<void> fetchPosts() async {
+    _loadingStreamController.sink.add(true);
     String jsonString = await loadTextAsset(getJsonPath("postList.json"));
     var json = jsonDecode(jsonString);
     for (final item in json["posts"]) {
       posts.add(Post.fromJson(item));
     }
-    setState(() {});
-  }
-
-  Future<void> _handleRefresh() async {
-    _loadingStreamController.sink.add(true);
     Timer(Duration(seconds: 1), () {
       _loadingStreamController.sink.add(false);
       setState(() {});
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -99,32 +97,28 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                     stream: _loadingStreamController.stream,
                     initialData: false,
                     builder: (context, snapshot) {
-                      if (snapshot.data == true) {
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                    }
                       return TabBarView(
                         children: [
                          RefreshIndicator(
-                           onRefresh: _handleRefresh,
-
-                           child: GridViewWidget(
-                                itemCount: posts.length,
-                                crossCount: 2,
-                                mainExtent: 240,
-                                GridWidget: (int index) {
-                                  return PostItem(
-                                    padding: EdgeInsets.only(right: index % 2 == 0 ? 27 : 12, left: index % 2 != 0 ? 30 : 12),
-                                    post:posts[index],
-                                  );
-                                },
-                              ),
+                           onRefresh: fetchPosts,
+                           child: Skeletonizer(
+                             enabled: snapshot.data == true,
+                             child: GridViewWidget(
+                                  itemCount: posts.length,
+                                  crossCount: 2,
+                                  mainExtent: 240,
+                                  GridWidget: (int index) {
+                                    return PostItem(
+                                      padding: EdgeInsets.only(right: index % 2 == 0 ? 27 : 12, left: index % 2 != 0 ? 30 : 12),
+                                      post:posts[index],
+                                    );
+                                  },
+                                ),
+                           ),
                          ),
-                          RefreshIndicator(
-                              onRefresh: _handleRefresh,
-
-                              child: AlbumWidget()),
+                              Skeletonizer(
+                                  enabled: snapshot.data == true,
+                                  child: AlbumWidget()),
                         ],
                       );
                   }

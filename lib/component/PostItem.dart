@@ -18,7 +18,6 @@ class PostItem extends StatefulWidget {
 }
 
 class _PostItemState extends State<PostItem> {
-  bool _enabled = true;
   Map<String, IconData> icons = {"video": FontAwesomeIcons.youtube, "photo": FontAwesomeIcons.image, "sound": FontAwesomeIcons.volumeLow, "text": FontAwesomeIcons.fileLines};
   Map<String, Color> colors = {
     "video": Colors.blueAccent,
@@ -27,21 +26,10 @@ class _PostItemState extends State<PostItem> {
     "text": Colors.purple,
   };
 
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 1), () {
-      setState(() {
-        _enabled = false;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(
-      enabled: _enabled,
-      child: Container(
+    return Container(
         padding: widget.padding,
         width: MediaQuery.of(context).size.width / 2,
         height: (MediaQuery.of(context).size.width / 2),
@@ -93,7 +81,6 @@ class _PostItemState extends State<PostItem> {
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }
