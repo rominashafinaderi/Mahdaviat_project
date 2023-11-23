@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mahdaviat_project/component/AppBarWidgets/AppBarActionWidgets.dart';
 import 'package:mahdaviat_project/component/AppBarWidgets/AppBarLeadigWidgets.dart';
-import 'package:mahdaviat_project/component/AppBarWidgets/AppBarTitle.dart';
 import 'package:mahdaviat_project/component/customeAppBar.dart';
 import 'package:flutter/animation.dart';
 

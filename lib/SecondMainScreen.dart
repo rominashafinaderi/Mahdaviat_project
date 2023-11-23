@@ -13,10 +13,10 @@ import 'package:mahdaviat_project/component/customeAppBar.dart';
 import 'package:mahdaviat_project/ThirdMainScreen.dart';
 import 'package:mahdaviat_project/AboutUsScreen.dart';
 import 'package:mahdaviat_project/helpers.dart';
-
 import 'component/GridVIewWidget.dart';
-import 'models/album.dart';
 import 'models/post.dart';
+import 'package:skeletonizer/skeletonizer.dart';
+
 
 class SecondMainScreen extends StatefulWidget {
   const SecondMainScreen({
@@ -26,8 +26,6 @@ class SecondMainScreen extends StatefulWidget {
   @override
   State<SecondMainScreen> createState() => _SecondMainScreenState();
 }
-
-
 
 class _SecondMainScreenState extends State<SecondMainScreen> {
   int selectedIndex = 0;
@@ -52,13 +50,18 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
     fetchPosts();
   }
 
-  void fetchPosts() async {
+  Future<void> fetchPosts() async {
+    _loadingStreamController.sink.add(true);
     String jsonString = await loadTextAsset(getJsonPath("postList2.json"));
     var json = jsonDecode(jsonString);
+    posts2 = []; // این خط را اضافه کنید
     for (final item in json["posts"]) {
       posts2.add(Post.fromJson(item));
     }
-    setState(() {});
+    Timer(Duration(seconds: 1), () {
+      _loadingStreamController.sink.add(false);
+      setState(() {});
+    });
   }
 
   @override
@@ -98,28 +101,29 @@ class _SecondMainScreenState extends State<SecondMainScreen> {
                   stream: _loadingStreamController.stream,
                   initialData: false,
                   builder: (context, snapshot) {
-                    if (snapshot.data == true) {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
                     return TabBarView(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20, left: 20),
-                         child: GridViewWidget(
-                            itemCount: posts2.length,
-                            crossCount:3,
-                            mainExtent: 160,
-                            GridWidget: (int index) {
-                              return PostItem_2(
-                                  padding: EdgeInsets.only(right: index % 2 == 0 ? 10 : 10, left: index % 2 != 0 ? 10 : 10),
-                                  post2:posts2[index]
-                              );
-                            },
+                        RefreshIndicator(
+                          onRefresh: fetchPosts,
+                          child: Skeletonizer(
+                            enabled: snapshot.data == true,
+                            child: Padding(
+                              padding: const EdgeInsets.only(right: 20, left: 20),
+                             child: GridViewWidget(
+                                itemCount: posts2.length,
+                                crossCount:3,
+                                mainExtent: 160,
+                                GridWidget: (int index) {
+                                  return PostItem_2(
+                                      padding: EdgeInsets.only(right: index % 2 == 0 ? 10 : 10, left: index % 2 != 0 ? 10 : 10),
+                                      post2:posts2[index]
+                                  );
+                                },
+                              ),
+                            ),
                           ),
                         ),
-                        AlbumWidget( ),
+                        AlbumWidget(),
                       ],
                     );
                   }

@@ -8,7 +8,8 @@ class GridViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  GridView.builder(
+    return
+      GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount:crossCount, mainAxisExtent: mainExtent // <-- *****
       ),
       itemCount: itemCount,

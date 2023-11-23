@@ -78,9 +78,6 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
               Navigator.push(context, MaterialPageRoute(builder: (context)=> SearchScreen()));
             }),
           ],),
-
-
-
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -116,9 +113,12 @@ class _FirstMainScreenState extends State<FirstMainScreen> {
                                 ),
                            ),
                          ),
-                              Skeletonizer(
-                                  enabled: snapshot.data == true,
-                                  child: AlbumWidget()),
+
+                      Skeletonizer(
+                      enabled: snapshot.data == true,
+                      child:
+                          AlbumWidget()
+                      )
                         ],
                       );
                   }
